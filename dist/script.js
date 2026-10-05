@@ -22,3 +22,20 @@ content.retailers.forEach(retailer=>{const link=document.createElement('a');link
 const dialog=document.getElementById('privacy-dialog');document.getElementById('privacy-open').addEventListener('click',()=>dialog.showModal());dialog.querySelector('button').addEventListener('click',()=>dialog.close());dialog.addEventListener('click',event=>{if(event.target===dialog){const r=dialog.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)dialog.close()}});
 if(content.videos.tutorial){const stage=document.querySelector('.video-stage');stage.replaceChildren();const video=document.createElement('video');video.controls=true;video.preload='metadata';video.src=content.videos.tutorial;video.style.width='100%';stage.append(video)}
 content.videos.creators.forEach((item,index)=>{const card=document.querySelectorAll('.story-grid article')[index];if(!card||!item.src)return;card.replaceChildren();card.classList.add('has-video');const video=document.createElement('video');video.src=item.src;video.controls=true;video.preload='metadata';video.setAttribute('aria-label',item.title||'Experiência com Prudence Infinity');if(item.poster)video.poster=item.poster;card.append(video)});
+
+// Keep Infinity visible while switching the alternative product and its facts together.
+const comparisonDataNode = document.getElementById('comparison-data');
+if (comparisonDataNode) {
+ const alternatives = JSON.parse(comparisonDataNode.textContent);
+ const section = document.getElementById('comparativo');
+ const productColumn = section.querySelector('thead th:last-child');
+ section.querySelectorAll('[data-compare]').forEach(button => button.addEventListener('click', () => {
+  const product = alternatives[button.dataset.compare];
+  section.querySelectorAll('[data-compare]').forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+  const img = productColumn.querySelector('img');
+  img.src = product.image; img.alt = product.alt;
+  productColumn.querySelector('strong').textContent = product.name;
+  productColumn.querySelector('span').textContent = product.description;
+  section.querySelectorAll('tbody tr').forEach((row, index) => row.lastElementChild.textContent = product.cells[index]);
+ }));
+}
