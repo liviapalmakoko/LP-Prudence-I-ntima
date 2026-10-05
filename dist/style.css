@@ -119,3 +119,6 @@ header nav{font-size:11px;gap:13px}header>.button{padding:10px 18px;font-size:12
 @media(max-width:700px){.included-items img{height:115px}}
 
 .hero-art>img#hero-image{transform:rotate(-58deg)}
+
+.hero-bottom{justify-content:space-between}.hero-copy{min-height:390px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+@media(max-width:700px){.hero-copy{min-height:360px}.hero-bottom{gap:12px}.hero-bottom>span{max-width:90px}.slider-controls{gap:10px}}
