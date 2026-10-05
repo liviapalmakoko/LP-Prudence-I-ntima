@@ -45,6 +45,4 @@
   document.documentElement.classList.add('motion-ready');
   reduce.addEventListener('change',()=>{if(reduce.matches)revealTargets.forEach(el=>el.classList.add('visible'));});
  }
- const copy=document.querySelector('.hero-copy');
- new MutationObserver(()=>{if(reduce.matches)return;copy.classList.remove('banner-enter');void copy.offsetWidth;copy.classList.add('banner-enter');}).observe(document.getElementById('hero-title'),{childList:true});
 })();
