@@ -1,4 +1,4 @@
-/* Luz suave, sem deslocar texto ou produto. */
+/* Luz suave e rotação do produto acompanhando a rolagem. */
 (()=>{
  const hero=document.querySelector('.hero'),canvas=document.getElementById('fluid-bg');
  if(!hero||!canvas)return;
@@ -23,4 +23,19 @@
  hero.addEventListener('pointerleave',()=>{tx=.7;ty=.4;start();});
  document.addEventListener('visibilitychange',start);
  reduce.addEventListener('change',()=>{cancelAnimationFrame(frame);frame=0;x=.7;y=.4;paint();});
+ const product=document.querySelector('.product-section'),disc=document.querySelector('.immersive-disc');
+ let scrollFrame=0;
+ function rotateProduct(){
+  scrollFrame=0;
+  if(!product||!disc)return;
+  if(reduce.matches){disc.style.transform='';return;}
+  const r=product.getBoundingClientRect();
+  const progress=Math.max(0,Math.min(1,(innerHeight-r.top)/(innerHeight+r.height)));
+  disc.style.transform=`rotate(${-90+progress*70}deg)`;
+ }
+ function requestRotation(){if(!scrollFrame)scrollFrame=requestAnimationFrame(rotateProduct);}
+ addEventListener('scroll',requestRotation,{passive:true});
+ addEventListener('resize',requestRotation);
+ reduce.addEventListener('change',rotateProduct);
+ rotateProduct();
 })();
