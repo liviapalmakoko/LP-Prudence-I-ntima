@@ -6,6 +6,7 @@ function changeSlide(index){
  document.getElementById('hero-label').textContent=slide.label;
  document.getElementById('hero-title').innerHTML=slide.title;
  document.getElementById('hero-description').textContent=slide.description;
+ document.querySelector('.hero').dataset.slide=slide.kind;document.querySelector('.hero-wipes').hidden=slide.kind!=='wipes';document.getElementById('hero-image').hidden=slide.kind==='wipes';document.querySelector('.product-name').hidden=slide.kind==='wipes';document.querySelector('.product-caption').hidden=slide.kind==='wipes';
  const cta=document.getElementById('hero-cta');cta.textContent=slide.cta;cta.href=slide.href;
  document.getElementById('slide-count').textContent='0'+(currentSlide+1)+' / 03';
  document.querySelectorAll('[data-slide]').forEach((button,i)=>{button.classList.toggle('active',i===currentSlide);if(i===currentSlide)button.setAttribute('aria-current','true');else button.removeAttribute('aria-current');});
@@ -15,6 +16,7 @@ document.getElementById('previous').addEventListener('click',()=>changeSlide(cur
 document.getElementById('next').addEventListener('click',()=>changeSlide(currentSlide+1));
 document.querySelectorAll('[data-slide]').forEach(button=>button.addEventListener('click',()=>changeSlide(Number(button.dataset.slide))));
 
+changeSlide(0);
 const menu=document.querySelector('.menu'),nav=document.querySelector('header nav');menu.addEventListener('click',()=>{const open=nav.classList.toggle('open');menu.setAttribute('aria-expanded',String(open));menu.setAttribute('aria-label',open?'Fechar menu':'Abrir menu')});nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');menu.setAttribute('aria-expanded','false');menu.setAttribute('aria-label','Abrir menu')}));document.addEventListener('keydown',event=>{if(event.key==='Escape'){nav.classList.remove('open');menu.setAttribute('aria-expanded','false')}});
 content.retailers.forEach(retailer=>{const link=document.createElement('a');link.href=retailer.url;link.target='_blank';link.rel='noopener';const info=document.createElement('div'),name=document.createElement('strong'),description=document.createElement('small'),label=document.createElement('b');name.textContent=retailer.name;description.textContent=retailer.description;label.textContent='Visitar a loja';info.append(name,description);link.append(info,label);document.getElementById('retailer-list').append(link)});
 const dialog=document.getElementById('privacy-dialog');document.getElementById('privacy-open').addEventListener('click',()=>dialog.showModal());dialog.querySelector('button').addEventListener('click',()=>dialog.close());dialog.addEventListener('click',event=>{if(event.target===dialog){const r=dialog.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)dialog.close()}});
