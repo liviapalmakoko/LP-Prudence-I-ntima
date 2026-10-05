@@ -31,7 +31,7 @@
   if(reduce.matches){disc.style.transform='';return;}
   const r=product.getBoundingClientRect();
   const progress=Math.max(0,Math.min(1,(innerHeight-r.top)/(innerHeight+r.height)));
-  disc.style.transform=`rotate(${-90+progress*70}deg)`;
+  disc.style.transform=`rotate(${-130+progress*180}deg)`;
  }
  function requestRotation(){if(!scrollFrame)scrollFrame=requestAnimationFrame(rotateProduct);}
  addEventListener('scroll',requestRotation,{passive:true});
