@@ -117,3 +117,5 @@ header nav{font-size:11px;gap:13px}header>.button{padding:10px 18px;font-size:12
 .included-items figcaption{font-size:11px;color:#75606c;margin-top:9px}
 .hero-bottom{justify-content:center}
 @media(max-width:700px){.included-items img{height:115px}}
+
+.hero-art>img#hero-image{transform:rotate(-58deg)}
