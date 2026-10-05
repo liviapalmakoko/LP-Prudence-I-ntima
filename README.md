@@ -33,3 +33,9 @@ O prazo da mensagem do usuário (01/11/2026, concluída e aprovada) prevalece so
 
 Briefing: `/Users/livia/Downloads/BRIEFING_SITE_PRUDENCE_INTIMA.pdf`.
 Imagens Infinity: pasta Drive `1HsyawXzqoXipC5OySy9DuC5wEfUD1j0W`.
+
+## GitHub Pages
+
+O workflow `.github/workflows/pages.yml` publica apenas `dist`, preservando os caminhos relativos de imagens, fontes e artigos. No GitHub, em Settings → Pages → Build and deployment → Source, selecione **GitHub Actions**. Após enviar o commit pelo GitHub Desktop (Push origin), acompanhe a execução em Actions. O endereço confirmado aparece em Settings → Pages após a publicação.
+
+GitHub Pages em repositórios privados depende do plano GitHub. Não altere a visibilidade do repositório para público sem aprovação.
