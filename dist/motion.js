@@ -38,4 +38,13 @@
  addEventListener('resize',requestRotation);
  reduce.addEventListener('change',rotateProduct);
  rotateProduct();
+ const revealTargets=document.querySelectorAll('.section-top,.intro>div,.benefits article,.product-copy,.steps article,.story-grid article,.journal-card,.faq>div:first-child,.buy>div');
+ if(!reduce.matches&&'IntersectionObserver' in window){
+  const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target);}}),{threshold:.08});
+  revealTargets.forEach((el,i)=>{el.classList.add('reveal');el.style.setProperty('--reveal-delay',String(i%3*65)+'ms');observer.observe(el);});
+  document.documentElement.classList.add('motion-ready');
+  reduce.addEventListener('change',()=>{if(reduce.matches)revealTargets.forEach(el=>el.classList.add('visible'));});
+ }
+ const copy=document.querySelector('.hero-copy');
+ new MutationObserver(()=>{if(reduce.matches)return;copy.classList.remove('banner-enter');void copy.offsetWidth;copy.classList.add('banner-enter');}).observe(document.getElementById('hero-title'),{childList:true});
 })();

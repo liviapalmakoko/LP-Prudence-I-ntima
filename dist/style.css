@@ -90,3 +90,23 @@ header nav{order:1;margin:0 auto 0 0;gap:15px;font-size:12px;font-weight:700}hea
 .product-copy{min-height:0;padding:50px 7%}
 }
 @media(prefers-reduced-motion:reduce){.product-visual>img.immersive-disc{will-change:auto}}
+
+/* Navegação compacta e movimento de interface. */
+header{height:58px;max-width:1060px;width:86%;padding:8px 23px;margin:18px auto -76px;top:18px;box-shadow:0 8px 22px #00000014}
+header .brand img{width:106px;height:33px}header .brand span{font-size:6px;letter-spacing:3px;margin-top:2px}
+header nav{font-size:11px;gap:13px}header>.button{padding:10px 18px;font-size:12px}
+.hero{padding-top:135px}
+.motion-ready .reveal{opacity:0;translate:0 24px;transition:opacity .7s ease,translate .7s cubic-bezier(.2,.65,.3,1);transition-delay:var(--reveal-delay,0ms)}
+.motion-ready .reveal.visible{opacity:1;translate:0 0}
+.hero-copy{animation:copy-enter .8s ease both}
+.hero-art{animation:copy-enter 1s .15s ease both}
+@keyframes copy-enter{from{opacity:0;translate:0 20px}to{opacity:1;translate:0 0}}
+.hero-art>img{animation:product-breathe 6s ease-in-out infinite}
+@keyframes product-breathe{0%,100%{translate:0 0}50%{translate:0 -9px}}
+.hero-copy.banner-enter{animation:banner-enter .45s ease both}
+@keyframes banner-enter{from{opacity:.15;translate:0 12px}to{opacity:1;translate:0 0}}
+.benefits article,.story-grid article,.journal-art,#retailer-list a{transition:transform .3s ease,box-shadow .3s ease}
+@media(hover:hover){.benefits article:hover{transform:translateY(-6px)}.story-grid article:hover,.journal-card:hover .journal-art{transform:translateY(-5px);box-shadow:0 12px 26px #54273b12}#retailer-list a:hover{transform:translateY(-4px);box-shadow:0 12px 26px #54273b15}}
+.slider-controls>button{transition:background .2s,transform .2s}.slider-controls>button:hover{background:#ffffff80;transform:scale(1.08)}
+@media(max-width:700px){header{height:54px;width:calc(100% - 30px);margin:13px auto -67px;padding:8px 14px;top:13px}header .brand img{width:84px;height:28px}header>.button{font-size:10px;padding:9px 12px}header .menu{font-size:19px}header nav{top:63px;font-size:15px}.hero{padding-top:108px}}
+@media(prefers-reduced-motion:reduce){.motion-ready .reveal{opacity:1;translate:none;transition:none}.hero-copy,.hero-art,.hero-art>img{animation:none!important}}
