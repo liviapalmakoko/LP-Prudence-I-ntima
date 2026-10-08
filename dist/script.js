@@ -2,40 +2,79 @@ const content=window.PRUDENCE_CONTENT;
 let currentSlide=0;
 function changeSlide(index){
  currentSlide=(index+content.banners.length)%content.banners.length;
- const slide=content.banners[currentSlide],copy=document.querySelector('.hero-copy');
- document.getElementById('hero-label').textContent=slide.label;
- document.getElementById('hero-title').innerHTML=slide.title;
- document.getElementById('hero-description').textContent=slide.description;
- document.querySelector('.hero').dataset.slide=slide.kind;document.querySelector('.hero-wipes').hidden=slide.kind!=='wipes';document.getElementById('hero-image').hidden=slide.kind==='wipes';document.querySelector('.product-name').hidden=slide.kind==='wipes';document.querySelector('.product-caption').hidden=slide.kind==='wipes';
- const cta=document.getElementById('hero-cta');cta.textContent=slide.cta;cta.href=slide.href;
- document.getElementById('slide-count').textContent='0'+(currentSlide+1)+' / 03';
- document.querySelectorAll('.dots button[data-slide]').forEach((button,i)=>{button.classList.toggle('active',i===currentSlide);if(i===currentSlide)button.setAttribute('aria-current','true');else button.removeAttribute('aria-current');});
- copy.classList.remove('banner-enter');void copy.offsetWidth;copy.classList.add('banner-enter');
+ const slide=content.banners[currentSlide];
+ const img=document.getElementById('banner-image');
+ document.getElementById('banner-mobile').srcset=slide.mobile||slide.desktop;
+ img.src=slide.desktop;img.alt=slide.alt;
+ document.getElementById('banner-caption').textContent=slide.caption;
+ document.getElementById('banner-link').href=slide.href;
+ const cta=document.getElementById('banner-cta');cta.href=slide.href;cta.textContent=slide.cta;
+ document.getElementById('slide-count').textContent=String(currentSlide+1).padStart(2,'0')+' / '+String(content.banners.length).padStart(2,'0');
+ document.querySelectorAll('[data-slide]').forEach((button,i)=>{if(i===currentSlide)button.setAttribute('aria-current','true');else button.removeAttribute('aria-current')});
 }
 document.getElementById('previous').addEventListener('click',()=>changeSlide(currentSlide-1));
 document.getElementById('next').addEventListener('click',()=>changeSlide(currentSlide+1));
-document.querySelectorAll('.dots button[data-slide]').forEach(button=>button.addEventListener('click',()=>changeSlide(Number(button.dataset.slide))));
-
+document.querySelectorAll('[data-slide]').forEach(button=>button.addEventListener('click',()=>changeSlide(Number(button.dataset.slide))));
+document.querySelector('.campaign').addEventListener('keydown',event=>{if(event.key==='ArrowLeft'){event.preventDefault();changeSlide(currentSlide-1)}if(event.key==='ArrowRight'){event.preventDefault();changeSlide(currentSlide+1)}});
 changeSlide(0);
-const menu=document.querySelector('.menu'),nav=document.querySelector('header nav');menu.addEventListener('click',()=>{const open=nav.classList.toggle('open');menu.setAttribute('aria-expanded',String(open));menu.setAttribute('aria-label',open?'Fechar menu':'Abrir menu')});nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');menu.setAttribute('aria-expanded','false');menu.setAttribute('aria-label','Abrir menu')}));document.addEventListener('keydown',event=>{if(event.key==='Escape'){nav.classList.remove('open');menu.setAttribute('aria-expanded','false')}});
-content.retailers.forEach(retailer=>{const link=document.createElement('a');link.href=retailer.url;link.target='_blank';link.rel='noopener';const info=document.createElement('div'),name=document.createElement('strong'),description=document.createElement('small'),label=document.createElement('b');name.textContent=retailer.name;description.textContent=retailer.description;label.textContent='Visitar a loja';info.append(name,description);link.append(info,label);document.getElementById('retailer-list').append(link)});
-const dialog=document.getElementById('privacy-dialog');document.getElementById('privacy-open').addEventListener('click',()=>dialog.showModal());dialog.querySelector('button').addEventListener('click',()=>dialog.close());dialog.addEventListener('click',event=>{if(event.target===dialog){const r=dialog.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)dialog.close()}});
-if(content.videos.tutorial){const stage=document.querySelector('.video-stage');stage.replaceChildren();const video=document.createElement('video');video.controls=true;video.preload='metadata';video.src=content.videos.tutorial;video.style.width='100%';stage.append(video)}
-content.videos.creators.forEach((item,index)=>{const card=document.querySelectorAll('.story-grid article')[index];if(!card||!item.src)return;card.replaceChildren();card.classList.add('has-video');const video=document.createElement('video');video.src=item.src;video.controls=true;video.preload='metadata';video.setAttribute('aria-label',item.title||'Experiência com Prudence Infinity');if(item.poster)video.poster=item.poster;card.append(video)});
-
-// Keep Infinity visible while switching the alternative product and its facts together.
-const comparisonDataNode = document.getElementById('comparison-data');
-if (comparisonDataNode) {
- const alternatives = JSON.parse(comparisonDataNode.textContent);
- const section = document.getElementById('comparativo');
- const productColumn = section.querySelector('thead th:last-child');
- section.querySelectorAll('[data-compare]').forEach(button => button.addEventListener('click', () => {
-  const product = alternatives[button.dataset.compare];
-  section.querySelectorAll('[data-compare]').forEach(item => item.setAttribute('aria-pressed', String(item === button)));
-  const img = productColumn.querySelector('img');
-  img.src = product.image; img.alt = product.alt;
-  productColumn.querySelector('strong').textContent = product.name;
-  productColumn.querySelector('span').textContent = product.description;
-  section.querySelectorAll('tbody tr').forEach((row, index) => row.lastElementChild.textContent = product.cells[index]);
- }));
+const menu=document.querySelector('.menu'),nav=document.getElementById('main-nav');
+function closeMenu(){nav.classList.remove('open');menu.setAttribute('aria-expanded','false');menu.setAttribute('aria-label','Abrir menu')}
+menu.addEventListener('click',()=>{const open=nav.classList.toggle('open');menu.setAttribute('aria-expanded',String(open));menu.setAttribute('aria-label',open?'Fechar menu':'Abrir menu')});
+nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMenu()});
+function mountVideo(frame,item){
+ if(!item||!item.src)return;
+ const video=document.createElement('video');video.src=item.src;video.controls=true;video.preload='metadata';video.playsInline=true;video.setAttribute('aria-label',item.title||'Vídeo Prudence Íntima');if(item.poster)video.poster=item.poster;
+ frame.replaceChildren(video);
 }
+mountVideo(document.getElementById('tutorial-media'),content.videos.tutorial);
+content.videos.creators.forEach((item,i)=>mountVideo(document.querySelector(`[data-creator="${i}"]`),item));
+content.retailers.forEach(item=>{const link=document.createElement('a');link.href=item.url;link.target='_blank';link.rel='noopener';if(item.logo){const img=document.createElement('img');img.src=item.logo;img.alt=item.name;link.append(img)}const div=document.createElement('div'),name=document.createElement('strong'),description=document.createElement('span'),arrow=document.createElement('span');name.textContent=item.name;description.textContent=item.description;arrow.textContent='Visitar a loja ↗';div.append(name,description);link.append(div,arrow);document.getElementById('retailer-list').append(link)});
+const dialog=document.getElementById('privacy-dialog');document.getElementById('privacy-open').addEventListener('click',()=>dialog.showModal());dialog.querySelector('button').addEventListener('click',()=>dialog.close());
+dialog.addEventListener('click',event=>{if(event.target===dialog){const r=dialog.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)dialog.close()}});
+
+// Movimento editorial: entradas únicas e animações apenas nas áreas visíveis.
+const motionPreference=matchMedia('(prefers-reduced-motion: reduce)');
+const revealTargets=document.querySelectorAll('.section-heading,.product-copy,.product-portrait,.benefit-grid article,.tutorial-layout,.creator-grid article,.table-scroll,.faq-list,.journal-masthead,.blog-grid article,.purchase-grid article');
+const motionTargets=document.querySelectorAll('.kv-decoration,.product-portrait,.media-frame');
+const revealObserver=new IntersectionObserver(entries=>{
+ entries.forEach(({target,isIntersecting})=>{
+  if(!isIntersecting)return;
+  if(!motionPreference.matches){
+   const siblings=[...target.parentElement.children];
+   const delay=target.matches('article')?Math.min(siblings.indexOf(target)*85,240):0;
+   target.animate([{opacity:.35,translate:'0 22px'},{opacity:1,translate:'0 0'}],{duration:650,delay,easing:'cubic-bezier(.2,.65,.3,1)'});
+  }
+  revealObserver.unobserve(target);
+ });
+},{threshold:.12});
+revealTargets.forEach(target=>revealObserver.observe(target));
+const visibilityObserver=new IntersectionObserver(entries=>entries.forEach(({target,isIntersecting})=>target.classList.toggle('motion-visible',isIntersecting)),{rootMargin:'40px'});
+motionTargets.forEach(target=>visibilityObserver.observe(target));
+
+// Produto acompanha a rolagem e o cursor sem simular ângulos inexistentes.
+const productStage=document.querySelector('.product-portrait');
+const productImage=productStage.querySelector('img');
+let pointerX=0,pointerY=0,productFrame=0;
+function paintProduct(){
+ productFrame=0;
+ if(motionPreference.matches){productStage.style.removeProperty('--product-turn');productStage.style.removeProperty('--pointer-x');productStage.style.removeProperty('--pointer-y');return}
+ const rect=productStage.getBoundingClientRect();
+ const progress=Math.max(0,Math.min(1,(innerHeight-rect.top)/(innerHeight+rect.height)));
+ productStage.style.setProperty('--product-turn',`${-87+(progress-.5)*70}deg`);
+ productStage.style.setProperty('--pointer-x',`${pointerX*9+pointerY*5}deg`);
+ productStage.style.setProperty('--pointer-y',`${-pointerY*12}deg`);
+}
+function queueProduct(){if(!productFrame)productFrame=requestAnimationFrame(paintProduct)}
+productStage.addEventListener('pointermove',event=>{
+ if(event.pointerType==='touch')return;
+ const rect=productStage.getBoundingClientRect();
+ pointerX=(event.clientX-rect.left)/rect.width*2-1;
+ pointerY=(event.clientY-rect.top)/rect.height*2-1;
+ queueProduct();
+});
+productStage.addEventListener('pointerleave',()=>{pointerX=0;pointerY=0;queueProduct()});
+addEventListener('scroll',queueProduct,{passive:true});
+addEventListener('resize',queueProduct);
+motionPreference.addEventListener('change',queueProduct);
+queueProduct();
