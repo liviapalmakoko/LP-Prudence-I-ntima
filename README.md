@@ -66,7 +66,7 @@ A versão atual usa `index.html`, `site.css`, `script.js` e `content.js` novos. 
 
 ### Banners substituíveis
 
-Os três banners são imagens e mantêm exatamente a mesma proporção: **desktop 16:9** (recomendado 1920 × 1080) e **celular 4:5** (1080 × 1350). Substitua `desktop` e `mobile` em cada item de `content.js`; ajuste também `alt`, `caption`, `cta` e `href`. As artes provisórias de Infinity e lenços são SVGs autocontidos em `dist/assets/banners/`. O primeiro banner desktop é o KV fornecido, convertido em WebP. Cliente e equipe podem substituir as artes sem modificar a estrutura. Não há rotação automática.
+Os três banners são imagens e mantêm exatamente a mesma proporção: **desktop 16:9** (recomendado 1920 × 1080) e **celular 4:5** (1080 × 1350). Substitua `desktop` e `mobile` em cada item de `content.js`; ajuste também `alt`, `caption`, `cta` e `href`. As artes de Infinity e lenços são colagens com os recortes do KV, exportadas em WebP. A fonte editável está em `fontes-banners/banners.html` e é exportada com `fontes-banners/exportar.sh` (precisa de servidor na raiz: `python3 -m http.server 4174`). A foto dos lenços veio da página do produto na DKT Store (embalagem promocional “Leve 20 Pague 16”) e deve ser trocada pela foto oficial. Os títulos usam só Bold Eater até a Blinka Serif chegar. O primeiro banner desktop é o KV fornecido, convertido em WebP. Cliente e equipe podem substituir as artes sem modificar a estrutura. Não há rotação automática.
 
 ### Vídeos
 

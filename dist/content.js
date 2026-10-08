@@ -3,8 +3,8 @@
 window.PRUDENCE_CONTENT = {
  banners: [
   { desktop:'assets/kv/kv-desktop.webp', mobile:'assets/banners/01-kv-mobile.svg', alt:'Todo ciclo tem seu ritual. Prudence Íntima e disco menstrual Infinity.', caption:'Seu ciclo, seu ritual. Conheça a linha Prudence Íntima.', cta:'Comprar a linha ↗', href:'#onde-comprar' },
-  { desktop:'assets/banners/02-infinity-desktop.svg', mobile:'assets/banners/02-infinity-mobile.svg', alt:'A liberdade vem de dentro. Disco menstrual Prudence Infinity, macio, anatômico e com estojo.', caption:'Conheça o disco menstrual reutilizável Prudence Infinity.', cta:'Comprar Infinity ↗', href:'#comprar-infinity' },
-  { desktop:'assets/banners/03-lencos-desktop.svg', mobile:'assets/banners/03-lencos-mobile.svg', alt:'Cuidado que vai com você. Lenços umedecidos biodegradáveis Prudence Íntima.', caption:'Lenços biodegradáveis para acompanhar a sua rotina.', cta:'Comprar lenços ↗', href:'#comprar-lencos' }
+  { desktop:'assets/banners/02-infinity-desktop.webp', mobile:'assets/banners/02-infinity-mobile.webp', alt:'A liberdade vem de dentro. Disco menstrual Prudence Infinity, macio, anatômico e com estojo.', caption:'Conheça o disco menstrual reutilizável Prudence Infinity.', cta:'Comprar Infinity ↗', href:'#comprar-infinity' },
+  { desktop:'assets/banners/03-lencos-desktop.webp', mobile:'assets/banners/03-lencos-mobile.webp', alt:'Cuidado que vai com você. Lenços umedecidos biodegradáveis Prudence Íntima.', caption:'Lenços biodegradáveis para acompanhar a sua rotina.', cta:'Comprar lenços ↗', href:'#comprar-lencos' }
  ],
  videos: {
   tutorial: {src:null, poster:null, title:'Como colocar, retirar e cuidar do Infinity'},
