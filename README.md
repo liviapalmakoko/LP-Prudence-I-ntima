@@ -21,7 +21,7 @@ Para adicionar parceiros, inclua objetos em `retailers` com `name`, `description
 1. Fotos e vídeos do shooting de 28/10, incluindo demonstrativo e UGC.
 2. Aprovação da identidade, uso dos logotipos oficiais e dos textos pela marca.
 3. Imagens e informações finais dos lenços biodegradáveis.
-4. URLs diretas dos produtos na DKT Store e parceiros. Infinity e o canal geral abrem a página inicial da DKT Store; o card dos lenços abre a coleção de lenços, ainda sem SKU final validado.
+4. URLs diretas dos produtos na DKT Store e parceiros. Infinity e o canal geral abrem a página inicial da DKT Store; o card dos lenços abre a página do produto (Lenço Umedecido Prudence Íntima com 20 unidades), que estava esgotado em 08/10/2026. O Infinity ainda não está cadastrado na DKT Store.
 5. Validação institucional de privacidade, SAC e redes sociais.
 6. Revisão técnica do conteúdo de produto e do manual. As instruções resumidas são baseadas na embalagem oficial fornecida, sem importar especificações do Softcup.
 
