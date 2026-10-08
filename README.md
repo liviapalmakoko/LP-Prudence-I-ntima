@@ -120,6 +120,7 @@ Regras visuais da rodada, todas em um bloco no fim de `dist/site.css`:
 - **Vídeos:** moldura de papel, leve giro e fita colorida. A moldura continua quando o vídeo real entra.
 - **Ícones:** traço grosso sobre um recorte de papel creme. Eles se desenham ao aparecer e depois seguem em movimento lento contínuo enquanto estão na tela (disco amassa, ponteiro gira, brilho percorre o infinito, estojo balança). O hover acelera o gesto. Com movimento reduzido, ficam estáticos.
 - **Compra:** cards em papel recortado com fita, e o produto sai pela borda.
+- **Carrossel em box:** os banners ficam num quadro com cantos arredondados (34px no desktop e 24px no celular) e sombra leve, e os controles ficam abaixo. Assim fica claro que é banner, e qualquer arte 16:9 / 4:5 encaixa.
 - **Favicon:** “(P)” feito com os traços do logo oficial, em pink sobre vinho (`assets/favicon.svg`, `favicon-32.png`, `apple-touch-icon.png`).
 
 Pendente: a serifada do KV (Blinka Serif) foi solicitada ao cliente em 08/10. A dupla serifada fina + Bold Eater nos títulos aguarda o arquivo.

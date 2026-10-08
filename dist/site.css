@@ -238,3 +238,17 @@ main{overflow-x:clip}
 .benefit-drawing.motion-visible svg [pathLength],.benefit-drawing.motion-visible .icon-move{animation:none}
 .purchase-grid article,.purchase-image img{transition:none}
 }
+
+
+/* Carrossel em box: deixa claro que é banner e acomoda qualquer arte, do KV às peças futuras. */
+.campaign{padding:104px 32px 0;max-width:1600px}
+.banner-link{border-radius:34px;box-shadow:0 18px 40px -18px #44001155;isolation:isolate}
+.campaign-bar{background:none;padding-inline:8px;min-height:96px}
+.campaign-bar::before{display:none}
+
+@media(max-width:700px){
+.campaign{padding:84px 14px 0}
+.banner-link{border-radius:24px}
+.banner-link picture{padding-top:0;background:none}
+.campaign-bar{padding:20px 4px 22px}
+}
