@@ -62,7 +62,7 @@ Rodada de composição: topo contínuo com menu flutuante, KV recomposto em elem
 
 ## Reestruturação completa em 08/10/2026
 
-A versão atual usa `index.html`, `site.css`, `script.js` e `content.js` novos. `style.css`, `kv.css` e `motion.js` pertencem às rodadas anteriores e não são carregados pela LP ou pelas internas. Os títulos da LP usam Bold Eater em caixa alta, sem misturar tamanhos de fontes na mesma frase. As internas do blog usam títulos editoriais serifados.
+A versão atual usa `index.html`, `site.css`, `script.js` e `content.js` novos. `style.css`, `kv.css` e `motion.js` pertencem às rodadas anteriores e foram movidos para `arquivo-fora-do-site/`. Os títulos da LP usam Bold Eater em caixa alta, sem misturar tamanhos de fontes na mesma frase. As internas do blog usam títulos editoriais serifados.
 
 ### Banners substituíveis
 
@@ -125,3 +125,7 @@ Regras visuais da rodada, todas em um bloco no fim de `dist/site.css`:
 Pendente: a serifada do KV (Blinka Serif) foi solicitada ao cliente em 08/10. A dupla serifada fina + Bold Eater nos títulos aguarda o arquivo.
 
 Referência aprovada pelo cliente: https://historias.useprudence.com.br/
+
+## Arquivos fora do site
+
+`arquivo-fora-do-site/` guarda o que saiu de `dist` em 08/10/2026 por não ser usado por nenhuma página: PNGs originais substituídos por WebP, derivados do KV sem uso, `BoldEater.otf` e o CSS/JS das rodadas anteriores. A pasta fica no repositório, mas não é publicada. Ao reaproveitar um arquivo, copie-o de volta para `dist/assets` com o mesmo caminho.
