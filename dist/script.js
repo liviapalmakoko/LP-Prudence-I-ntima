@@ -16,6 +16,12 @@ document.getElementById('previous').addEventListener('click',()=>changeSlide(cur
 document.getElementById('next').addEventListener('click',()=>changeSlide(currentSlide+1));
 document.querySelectorAll('[data-slide]').forEach(button=>button.addEventListener('click',()=>changeSlide(Number(button.dataset.slide))));
 document.querySelector('.campaign').addEventListener('keydown',event=>{if(event.key==='ArrowLeft'){event.preventDefault();changeSlide(currentSlide-1)}if(event.key==='ArrowRight'){event.preventDefault();changeSlide(currentSlide+1)}});
+// Deslize horizontal no celular troca o banner; toques e rolagem vertical seguem normais.
+let touchStartX=0,touchStartY=0,swiped=false;
+const campaignBanner=document.getElementById('banner-link');
+campaignBanner.addEventListener('touchstart',event=>{touchStartX=event.touches[0].clientX;touchStartY=event.touches[0].clientY;swiped=false},{passive:true});
+campaignBanner.addEventListener('touchend',event=>{const dx=event.changedTouches[0].clientX-touchStartX,dy=event.changedTouches[0].clientY-touchStartY;if(Math.abs(dx)>45&&Math.abs(dx)>Math.abs(dy)*1.5){swiped=true;changeSlide(currentSlide+(dx<0?1:-1))}},{passive:true});
+campaignBanner.addEventListener('click',event=>{if(swiped){event.preventDefault();swiped=false}});
 changeSlide(0);
 const menu=document.querySelector('.menu'),nav=document.getElementById('main-nav');
 function closeMenu(){nav.classList.remove('open');menu.setAttribute('aria-expanded','false');menu.setAttribute('aria-label','Abrir menu')}
@@ -36,7 +42,7 @@ dialog.addEventListener('click',event=>{if(event.target===dialog){const r=dialog
 // Movimento editorial: entradas únicas e animações apenas nas áreas visíveis.
 const motionPreference=matchMedia('(prefers-reduced-motion: reduce)');
 const revealTargets=document.querySelectorAll('.section-heading,.product-copy,.product-portrait,.benefit-grid article,.tutorial-layout,.creator-grid article,.table-scroll,.faq-list,.journal-masthead,.blog-grid article,.purchase-grid article');
-const motionTargets=document.querySelectorAll('.kv-decoration,.product-portrait,.media-frame');
+const motionTargets=document.querySelectorAll('.kv-decoration,.product-portrait,.media-frame,.benefit-drawing');
 const revealObserver=new IntersectionObserver(entries=>{
  entries.forEach(({target,isIntersecting})=>{
   if(!isIntersecting)return;

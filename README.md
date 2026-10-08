@@ -54,7 +54,7 @@ Relatório para cobertura de férias: `entregas/Passagem de projeto Prudence Int
 
 ## Aplicação do KV recebido em 07/10/2026
 
-O KV de `material-cliente` foi aplicado à versão local: banner oficial no desktop, composição adaptada no celular com lettering extraído do PSD, paleta e recortes nas seções, fonte Bold Eater local. Os originais foram preservados. Os derivados ficam em `dist/assets/kv` e a aplicação visual em `dist/kv.css`.
+O KV de `material-cliente` foi aplicado à versão local: banner oficial no desktop, composição adaptada no celular com lettering extraído do PSD, paleta e recortes nas seções, fonte Bold Eater local. Os originais foram preservados. Os derivados ficam em `dist/assets/kv`; a aplicação visual atual está em `dist/site.css` (o antigo `kv.css` não é mais carregado).
 
 **Pendência para os próximos relatórios:** o PSD referencia **Blinka Serif**, mas seu arquivo não veio em `material-cliente/FONTS`. O banner mantém a tipografia original por meio do lettering exportado; texto serifado editável usa Georgia provisoriamente. The Youth foi enviada, mas não aparece nas referências de fontes do PSD. O recebimento do KV não confirma aprovação final da marca.
 
@@ -99,3 +99,29 @@ Entradas únicas ao rolar, em sequência nos cards; recortes e disco com oscila�
 Produto interativo: o disco inclina nos eixos X/Y conforme o cursor dentro da composição e gira em um arco de 70 graus conforme a rolagem. A imagem mantém seu ângulo original como base. Não é visualização 360° de todos os lados: para isso é necessário modelo 3D ou sequência fotográfica do cliente. Atualizações agrupadas via requestAnimationFrame; movimento desativado com prefers-reduced-motion.
 
 Refino das interações: disco com rotação plana (sem perspectiva ou inclinação 3D), somando angulação pelo cursor à rolagem. Ícones dos benefícios oscilam no hover; reutilização gira. Títulos mudam de cor e links respondem ao hover. CTAs inseridos após benefícios, tutorial e comparação, direcionando aos cards de compra. Verificados no navegador: três CTAs presentes, sem erros de console ou overflow da página.
+
+## Otimização técnica em 08/10/2026
+
+Sem alteração de layout (conferido por comparação de capturas de tela antes/depois, desktop e celular).
+
+- Imagens pesadas convertidas para WebP: capas do blog (`assets/blog/*.webp`) e imagens das internas (`disco`, `caixa`, `case`). `caixa` foi reduzida para 1600 px de largura, já que aparece com 320 px de altura. Os PNGs originais deixaram de ser referenciados.
+- Fonte Bold Eater servida em WOFF2 (`assets/fonts/BoldEater.woff2`).
+- Compartilhamento: tags Open Graph/Twitter, `canonical` e favicon na LP; Open Graph nas internas. Imagem de compartilhamento: `assets/og-image.jpg` (1200 × 630, recorte do KV). **As URLs absolutas usam o endereço do GitHub Pages; atualize `canonical`, `og:url` e `og:image` em `index.html` e `conteudos.html` quando houver domínio definitivo.**
+- Carrossel: deslizar para os lados no celular troca o banner.
+- `.gitignore` exclui `material-cliente/` e `entregas/`.
+
+## Rodada de layout baseada no KV — 08/10/2026 (branch `layout-kv`)
+
+Regras visuais da rodada, todas em um bloco no fim de `dist/site.css`:
+
+- **Rasgos:** `assets/kv/paper-tear-{a,b}.svg` (e versões `-sm` para celular) substituem o serrilhado antigo, com borda clara de fibra como no KV. Também cobrem o fim do banner e as bordas da seção de creators.
+- **Recortes:** menos elementos e maiores, cortados pelas bordas e escondidos sob o papel vizinho, nunca sobre texto. O papel azul (`element-6`) entrou atrás do produto. No celular, a flor dos creators fica oculta e a folha do FAQ aparece só no rodapé.
+- **Cor:** decidimos **não** pintar as seções do meio, para não carregar. A cor entra pelos recortes.
+- **Vídeos:** moldura de papel, leve giro e fita colorida. A moldura continua quando o vídeo real entra.
+- **Ícones:** traço grosso sobre um recorte de papel creme. Eles se desenham ao aparecer e depois seguem em movimento lento contínuo enquanto estão na tela (disco amassa, ponteiro gira, brilho percorre o infinito, estojo balança). O hover acelera o gesto. Com movimento reduzido, ficam estáticos.
+- **Compra:** cards em papel recortado com fita, e o produto sai pela borda.
+- **Favicon:** “(P)” feito com os traços do logo oficial, em pink sobre vinho (`assets/favicon.svg`, `favicon-32.png`, `apple-touch-icon.png`).
+
+Pendente: a serifada do KV (Blinka Serif) foi solicitada ao cliente em 08/10. A dupla serifada fina + Bold Eater nos títulos aguarda o arquivo.
+
+Referência aprovada pelo cliente: https://historias.useprudence.com.br/

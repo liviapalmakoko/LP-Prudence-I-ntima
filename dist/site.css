@@ -1,4 +1,4 @@
-@font-face{font-family:'Bold Eater';src:url('assets/fonts/BoldEater.otf') format('opentype');font-weight:400;font-display:swap}
+@font-face{font-family:'Bold Eater';src:url('assets/fonts/BoldEater.woff2') format('woff2');font-weight:400;font-display:swap}
 @font-face{font-family:'Alte Haas';src:url('assets/fonts/AlteHaasGroteskRegular.woff2') format('woff2');font-weight:400;font-display:swap}
 @font-face{font-family:'Alte Haas';src:url('assets/fonts/AlteHaasGroteskBold.woff2') format('woff2');font-weight:700;font-display:swap}
 :root{--wine:#440011;--cream:#e8e2d4;--pink:#ff50a0;--blue:#8cacd8;--yellow:#f5ed83;--lavender:#efbbef;--line:#44001130}
@@ -119,3 +119,122 @@ main h2:hover{color:#c21964}
 .paper-wine .section-cta .button{background:var(--cream);color:var(--wine);border-color:var(--cream)}
 @media(max-width:700px){.section-cta{gap:16px;margin-top:28px}.section-cta p{font-size:13px}.section-cta .button{font-size:12px}}
 @media(prefers-reduced-motion:reduce){h2,.text-link{transition:none}.benefit-grid article:hover .benefit-drawing svg{animation:none}}
+
+
+/* Rodada KV 08/10: rasgos com fibra de papel, recortes maiores, vídeos colados, ícones desenhados e cards de papel. */
+main{overflow-x:clip}
+
+/* Rasgos orgânicos com borda clara de fibra, como no KV. */
+.paper-blue::before,.paper-wine::before,.paper-pink::before,.creators-section::before{background-image:url('assets/kv/paper-tear-b.svg')}
+.paper-blue::after,.paper-wine::after,.creators-section::after{background-image:url('assets/kv/paper-tear-a.svg')}
+.creators-section::before,.creators-section::after{content:'';position:absolute;left:0;width:100%;height:45px;pointer-events:none;background:url('assets/kv/paper-tear-a.svg') bottom/100% 100% no-repeat;transform:none;right:auto;z-index:auto}
+.creators-section::before{top:-1px;bottom:auto;background-image:url('assets/kv/paper-tear-b.svg');transform:rotate(180deg)}
+.creators-section::after{bottom:-1px}
+.creators-section{padding-block:105px}
+
+/* Fim do banner coberto por uma tira de papel rasgado. */
+.campaign-bar{position:relative;z-index:1;border-bottom:0}
+.campaign-bar::before{content:'';position:absolute;left:0;right:0;top:-40px;height:41px;background:url('assets/kv/paper-tear-a.svg') bottom/100% 100% no-repeat;pointer-events:none}
+
+/* Recortes grandes, cortados pelas bordas e pelos papéis vizinhos. */
+.product-intro,.tutorial,.faq-section{position:relative;isolation:isolate;overflow-x:visible;overflow-y:clip}
+.kv-blue{width:640px;left:-380px;top:50px;transform:rotate(-8deg)}
+.kv-engraving{width:470px;height:400px;right:-215px;top:-55px}
+.benefit-section .section-heading{padding-right:0}
+.kv-pattern{width:380px;height:437px;right:-300px;bottom:-215px}
+.tutorial .section-heading{padding-right:0}
+.creators-section:before{z-index:auto}
+.kv-creators-lilac{width:390px;height:422px;right:-165px;top:-70px;transform:rotate(-12deg)}
+.kv-sculpture{width:215px;height:530px;right:-35px;top:150px;bottom:auto;transform:rotate(-9deg)}
+.kv-stripes{width:135px;height:276px;right:70px;top:-95px;background:none}
+.kv-drapery{width:560px;height:340px;left:-340px;bottom:25px;transform:rotate(12deg)}
+.kv-lilac{width:430px;height:465px;right:-175px;top:-150px}
+
+/* Vídeos como fotos coladas: moldura de papel, leve giro e fita. */
+.media-frame{overflow:visible;box-shadow:0 0 0 10px #f7f3ea,0 22px 34px -14px #44001150}
+.tutorial-frame{rotate:-1deg}
+.creator-grid article:nth-child(1) .creator-frame{rotate:-1.4deg}
+.creator-grid article:nth-child(2) .creator-frame{rotate:1.1deg}
+.creator-grid article:nth-child(3) .creator-frame{rotate:-.6deg}
+.media-frame::after{content:'';position:absolute;z-index:2;top:-24px;left:50%;width:104px;height:32px;translate:-50% 0;rotate:-4deg;background:#ff50a0d9;clip-path:polygon(3% 12%,97% 0,100% 86%,1% 100%);pointer-events:none}
+.creator-grid article:nth-child(2) .creator-frame::after{background:#f5ed83e6;rotate:5deg;left:62%}
+.creator-grid article:nth-child(3) .creator-frame::after{background:#efbbefe6;rotate:-2deg;left:40%}
+.creator-grid{padding-top:30px}
+.creator-caption{margin-top:24px}
+
+/* Ícones: traço grosso sobre recorte de papel; desenham ao aparecer e reagem ao cursor. */
+.benefit-drawing{width:112px;height:104px;border:0;background:var(--cream);clip-path:polygon(2% 8%,22% 3%,47% 6%,71% 1%,97% 5%,100% 32%,96% 61%,99% 95%,73% 98%,49% 94%,24% 100%,3% 96%,0 67%,4% 36%);rotate:-4deg;margin-bottom:26px}
+.benefit-grid article:nth-child(even) .benefit-drawing{rotate:3deg}
+.benefit-drawing svg,.benefit-grid article:nth-child(even) .benefit-drawing svg{width:74px;height:74px;transform:none;overflow:visible}
+.benefit-drawing .icon-move{transform-box:view-box;transform-origin:40px 44px}
+.icon-disc .icon-move{transform-origin:40px 40px}
+.icon-case .icon-move{transform-origin:40px 70px}
+.icon-spark{stroke:var(--pink);stroke-dasharray:.16 .84;stroke-dashoffset:0;opacity:0}
+@keyframes icon-draw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+@keyframes icon-squish{0%,100%{scale:1 1}35%{scale:1.08 .86}65%{scale:.96 1.05}}
+@keyframes icon-hand{to{rotate:360deg}}
+@keyframes icon-travel{from{stroke-dashoffset:0;opacity:1}to{stroke-dashoffset:-1;opacity:1}}
+@keyframes icon-wobble{0%,100%{rotate:0deg}30%{rotate:-9deg}65%{rotate:7deg}}
+.benefit-drawing.motion-visible svg [pathLength]:not(.icon-spark){stroke-dasharray:1;animation:icon-draw 1.2s cubic-bezier(.45,.05,.3,1) both}
+.benefit-grid article:nth-child(2) .benefit-drawing.motion-visible svg [pathLength]{animation-delay:.12s}
+.benefit-grid article:nth-child(3) .benefit-drawing.motion-visible svg [pathLength]:not(.icon-spark){animation-delay:.24s}
+.benefit-grid article:nth-child(4) .benefit-drawing.motion-visible svg [pathLength]{animation-delay:.36s}
+/* Em repouso, cada ícone se move devagar depois de desenhado; o cursor acelera o gesto. */
+.benefit-drawing.motion-visible .icon-disc .icon-move{animation:icon-squish 3.2s ease-in-out 1.3s infinite}
+.benefit-drawing.motion-visible .icon-clock .icon-move{animation:icon-hand 9s linear 1.5s infinite}
+.benefit-drawing.motion-visible .icon-spark{animation:icon-travel 3.4s linear 1.7s infinite}
+.benefit-drawing.motion-visible .icon-case .icon-move{animation:icon-wobble 3.6s ease-in-out 1.9s infinite}
+@media(hover:hover){
+.benefit-grid article:hover .icon-disc .icon-move{animation-duration:1s}
+.benefit-grid article:hover .icon-clock .icon-move{animation-duration:2.4s}
+.benefit-grid article:hover .icon-spark{animation-duration:1.4s}
+.benefit-grid article:hover .icon-case .icon-move{animation-duration:1.1s}
+}
+
+/* Cards de compra em papel recortado, com o produto saindo da borda. */
+.purchase-grid{gap:45px;margin-top:85px}
+.purchase-grid article,.purchase-grid article:nth-child(2){position:relative;isolation:isolate;background:none;grid-template-columns:minmax(0,190px) minmax(0,1fr);padding:30px 40px 35px 30px;transition:translate .3s}
+.purchase-grid article::before{content:'';position:absolute;inset:0;z-index:-1;background:var(--cream);clip-path:polygon(1% 4%,16% 1%,34% 3%,52% 0,71% 3%,88% 1%,100% 3%,99% 30%,100% 58%,98% 97%,80% 99%,61% 96%,42% 100%,23% 97%,2% 99%,0 72%,2% 44%,0 20%);rotate:-1.2deg}
+.purchase-grid article:nth-child(2)::before{background:var(--yellow);rotate:1deg}
+.purchase-grid article::after{content:'';position:absolute;top:-12px;right:46px;width:86px;height:26px;background:#efbbefe6;clip-path:polygon(3% 12%,97% 0,100% 86%,1% 100%);rotate:6deg}
+.purchase-grid article:nth-child(2)::after{background:#8cacd8e6;rotate:-5deg;right:auto;left:52%}
+.purchase-image{height:250px;margin-top:-80px;overflow:visible}
+.purchase-image img{filter:drop-shadow(10px 16px 14px #44001130);transition:rotate .4s,translate .4s}
+@media(hover:hover){
+.purchase-grid article:hover{translate:0 -4px}
+.purchase-grid article:hover .purchase-image img{rotate:-3deg;translate:0 -6px}
+}
+
+@media(max-width:700px){
+.paper-blue::before,.paper-wine::before,.paper-pink::before,.creators-section::before{background-image:url('assets/kv/paper-tear-b-sm.svg')}
+.paper-blue::after,.paper-wine::after,.creators-section::after{background-image:url('assets/kv/paper-tear-a-sm.svg')}
+.creators-section::before,.creators-section::after{height:30px}
+.creators-section{padding-block:70px}
+.campaign-bar::before{top:-26px;height:27px;background-image:url('assets/kv/paper-tear-a-sm.svg')}
+
+.kv-blue{width:300px;left:-175px;top:20px}
+.kv-engraving{width:240px;height:205px;right:-120px;top:-40px}
+.kv-pattern{width:200px;height:230px;right:-135px;bottom:-140px}
+.kv-creators-lilac{width:210px;height:227px;right:-120px;top:-45px}
+.kv-sculpture{display:none}
+.kv-stripes{width:80px;height:163px;right:18px;top:-70px}
+.kv-drapery{width:230px;height:140px;left:auto;right:-110px;top:auto;bottom:-75px;transform:rotate(-14deg)}
+.kv-lilac{width:220px;height:238px;right:-125px;top:-85px}
+
+.media-frame{box-shadow:0 0 0 7px #f7f3ea,0 16px 26px -12px #44001150}
+.media-frame::after{width:78px;height:24px;top:-17px}
+.creator-grid{padding:30px 14px 22px;margin-inline:-14px}
+
+.benefit-drawing{width:88px;height:82px;margin-bottom:18px}
+.benefit-drawing svg,.benefit-grid article:nth-child(even) .benefit-drawing svg{width:58px;height:58px}
+
+.purchase-grid{gap:50px;margin-top:70px}
+.purchase-grid article,.purchase-grid article:nth-child(2){grid-template-columns:minmax(0,110px) minmax(0,1fr);padding:22px 20px 26px}
+.purchase-image{height:190px;margin-top:-60px}
+.purchase-grid article::after{right:24px;width:70px;height:22px}
+}
+
+@media(prefers-reduced-motion:reduce){
+.benefit-drawing.motion-visible svg [pathLength],.benefit-drawing.motion-visible .icon-move{animation:none}
+.purchase-grid article,.purchase-image img{transition:none}
+}
