@@ -1,0 +1,126 @@
+@font-face{font-family:'Blinka Serif';src:url('assets/fonts/BlinkaSerif.otf') format('opentype');font-weight:400;font-style:normal;font-display:swap}
+/* Revisão de direção de arte: uma composição botânica, produto e contraste do KV.
+   Blinka Serif recebida em 23/10; licença web ainda pendente de comprovação. */
+:root{--cream:#f2e9df;--pink:#ee91b5;--blue:#8cacd8;--yellow:#eddfab;--lavender:#dec5df;--line:#44001126}
+.site-header{background:#320e1c;box-shadow:0 8px 28px #44001114}
+.header-buy{background:#ee91b5;border-color:#ee91b5}
+.header-buy:hover{background:var(--cream);color:var(--wine)}
+.campaign-bar{border-bottom:1px solid var(--line)}
+h2{font-family:'Blinka Serif',Georgia,serif;font-weight:400;line-height:1.08;letter-spacing:-.035em}
+h2 span{display:inline-block;font-family:'Bold Eater',Arial,sans-serif;font-style:normal;font-size:.88em;letter-spacing:0;text-transform:uppercase;line-height:1.12}
+h2:hover{color:inherit}
+.product-intro{padding-block:65px 85px;gap:8%}
+.product-portrait{min-height:465px;clip-path:none;background:#e3c3c0;transform:none;isolation:isolate;overflow:hidden;border-radius:48% 48% 3px 3px}
+.product-portrait>img{height:360px;width:250px;filter:drop-shadow(12px 20px 15px #44001130)}
+.product-portrait::before{display:none}
+.paper-label{top:28px;left:50%;transform:translateX(-50%);white-space:nowrap;background:var(--cream);padding:9px 13px;font-size:9px;letter-spacing:1.6px}
+.portrait-note{font-size:20px;bottom:23px;right:24px;transform:none;text-align:right}
+.ritual-note{font-family:'Blinka Serif',Georgia,serif;font-style:normal;color:#78364b;font-size:20px;line-height:1.4;margin-bottom:22px}
+.product-copy .lead{font-size:22px}
+.kv-blue{width:560px;left:-420px;top:80px;opacity:.6}
+.benefit-section{background:#e9d9cf;padding-block:72px}
+.benefit-section .section-heading{padding-right:0}
+.benefit-drawing{background:transparent;clip-path:none;border-radius:0;rotate:0deg;width:90px;height:85px;margin-bottom:16px;justify-content:flex-start}
+.benefit-grid article:nth-child(even) .benefit-drawing{rotate:0deg}
+.benefit-grid h3{font-size:15px;letter-spacing:.02em}
+.benefit-section::before,.benefit-section::after{display:none}
+.benefit-section .section-cta{border-top:1px solid var(--line);padding-top:28px}
+.tutorial{padding-block:80px}
+.media-frame{box-shadow:none;overflow:hidden;border:1px solid var(--line);border-radius:4px}
+.tutorial-frame,.creator-grid article:nth-child(n) .creator-frame{rotate:0deg}
+.media-frame::after{display:none}
+.media-placeholder strong{font-family:'Blinka Serif',Georgia,serif;font-weight:400;letter-spacing:-.02em}
+.tutorial-frame:not(.has-video){aspect-ratio:16/9;min-height:0}
+.tutorial-frame:not(.has-video) .media-symbol{font-size:38px}
+.tutorial-frame:not(.has-video) .media-placeholder{padding:25px}
+.tutorial-frame:not(.has-video) .media-placeholder strong{font-size:32px}
+.creators-section{background:#d5ddef;padding-block:70px}
+.creators-section::before,.creators-section::after{display:none}
+.creator-grid{padding-top:0;gap:28px}
+.creators-section.awaiting-videos .creator-frame{aspect-ratio:auto;min-height:185px}
+.creators-section.awaiting-videos .media-placeholder{padding:22px}
+.creators-section.awaiting-videos .media-symbol{display:none}
+.creators-section.awaiting-videos .media-placeholder strong{font-size:27px;max-width:240px}
+.creator-caption{margin-top:15px}
+.comparison-section{padding-block:85px;margin-top:0}
+.journal-masthead::after{display:none}
+.journal-masthead>p{font-family:'Blinka Serif',Georgia,serif;font-style:normal}
+.blog-art img{filter:none}
+.blog-side .blog-art{border-radius:0}
+.buy-section{background:#eab6c7;padding-block:85px}
+.buy-section::before{display:none}
+.purchase-grid{gap:40px;margin-top:55px}
+.purchase-grid article,.purchase-grid article:nth-child(2){background:#f6efe5;padding:28px;grid-template-columns:minmax(0,145px) minmax(0,1fr);border-radius:4px}
+.purchase-grid article::before,.purchase-grid article::after{display:none}
+.purchase-image{height:210px;margin-top:0;overflow:hidden}
+.purchase-image img{filter:drop-shadow(8px 10px 10px #44001120)}
+@media(max-width:1100px){.purchase-grid article,.purchase-grid article:nth-child(2){padding:22px;grid-template-columns:minmax(0,110px) minmax(0,1fr)}}
+@media(max-width:700px){
+h2{font-size:39px}
+.product-intro{padding-block:30px 55px;gap:32px}
+.product-portrait{min-height:365px;max-width:420px;width:100%;margin:auto}
+.product-portrait>img{height:280px;width:200px}
+.product-copy h2{font-size:44px}
+.product-copy .lead{font-size:20px}
+.portrait-note{font-size:18px}
+.ritual-note{font-size:18px}
+.kv-blue{display:none}
+.benefit-section{padding-block:50px}
+.benefit-drawing{height:64px;width:70px}
+.tutorial{padding-block:55px}
+.tutorial-frame:not(.has-video){aspect-ratio:16/9;min-height:190px}
+.creators-section{padding-block:50px}
+.creator-grid{grid-template-columns:repeat(3,82%);gap:18px;padding:0 0 12px;margin-inline:0}
+.creators-section.awaiting-videos .creator-frame{min-height:165px}
+.creators-section.awaiting-videos .media-placeholder strong{font-size:26px}
+.comparison-section{padding-block:55px}
+.buy-section{padding-block:55px}
+.buy-section h2{font-size:43px}
+.purchase-grid{margin-top:30px;gap:18px}
+.purchase-grid article,.purchase-grid article:nth-child(2){padding:20px 16px;grid-template-columns:minmax(0,90px) minmax(0,1fr);gap:16px}
+.purchase-image{height:160px;margin:0}
+}
+
+/* Ícones de benefícios: desenho linear estático, sem deformação ou balanço. */
+.benefit-drawing{width:64px;height:64px;margin-bottom:24px;align-items:center}
+.benefit-drawing svg.benefit-icon,.benefit-grid article:nth-child(even) .benefit-drawing svg.benefit-icon{width:56px;height:56px;transform:none;rotate:0deg;animation:none}
+.benefit-grid article:hover .benefit-drawing svg.benefit-icon{animation:none}
+@media(max-width:700px){.benefit-drawing{width:52px;height:52px;margin-bottom:18px}.benefit-drawing svg.benefit-icon,.benefit-grid article:nth-child(even) .benefit-drawing svg.benefit-icon{width:46px;height:46px}}
+
+/* Demonstrativo com espaço real de player e passos alinhados ao topo. */
+.tutorial-layout{grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);align-items:start;gap:48px}
+.tutorial-frame{border:0;border-radius:8px;background:#380d20}
+.tutorial-frame:not(.has-video) .media-placeholder{padding:32px;gap:18px}
+.tutorial-frame .media-placeholder>.eyebrow{margin:0;font-size:10px;letter-spacing:2px;color:#edc4ce}
+.tutorial-frame:not(.has-video) .media-placeholder strong{font-size:clamp(28px,3vw,44px);max-width:90%;line-height:1.12}
+.tutorial-frame .media-status{border:0;border-radius:0;padding:0;margin:0;font-size:12px;line-height:1.5;color:#edc4ce}
+.tutorial .steps li:first-child{padding-top:5px}
+@media(max-width:700px){.tutorial-layout{grid-template-columns:1fr;gap:28px}.tutorial-frame:not(.has-video) .media-placeholder{padding:20px;gap:12px}.tutorial-frame:not(.has-video) .media-placeholder strong{font-size:30px}.tutorial-frame .media-placeholder>.eyebrow{font-size:8px}.tutorial-frame .media-status{font-size:10px}}
+
+/* Fotografias recortadas substituem os pictogramas do comparativo. */
+.comparison-image{height:145px;display:flex;align-items:center;justify-content:center;margin-bottom:24px}
+.comparison-image img{width:155px;height:135px;object-fit:contain;filter:drop-shadow(0 9px 9px #15000a35)}
+.infinity-column .comparison-image img{width:130px;height:125px;transform:rotate(-80deg)}
+@media(max-width:700px){.comparison-image{height:105px;margin-bottom:18px}.comparison-image img{width:112px;height:100px}.infinity-column .comparison-image img{width:100px;height:100px}}
+
+/* Um segundo momento floral, restrito à coluna editorial do FAQ. */
+.faq-botanical{width:min(290px,82%);height:auto;aspect-ratio:1;object-fit:contain;margin-top:36px;border-radius:0}
+@media(max-width:700px){.faq-section .section-heading{display:grid;grid-template-columns:1fr 100px;column-gap:20px;align-items:center}.faq-section .section-heading>.eyebrow,.faq-section .section-heading>h2,.faq-section .section-heading>p{grid-column:1}.faq-section .section-heading>h2{font-size:35px}.faq-section .section-heading>p{font-size:13px}.faq-botanical{grid-column:2;grid-row:2/4;width:100px;margin:0;align-self:center}.faq-section .section-heading>.eyebrow{grid-column:1/-1}}
+
+/* Rasgos herdam a cor da seção vizinha, sem faixa bege fixa no SVG. */
+.comparison-section::before,.comparison-section::after{background-image:none;background-repeat:no-repeat;mask-repeat:no-repeat;mask-position:bottom;mask-size:100% 100%;-webkit-mask-repeat:no-repeat;-webkit-mask-position:bottom;-webkit-mask-size:100% 100%}
+.comparison-section::before{background-color:#d5ddef;mask-image:url('assets/kv/paper-tear-b.svg');-webkit-mask-image:url('assets/kv/paper-tear-b.svg')}
+.comparison-section::after{background-color:var(--cream);mask-image:url('assets/kv/paper-tear-a.svg');-webkit-mask-image:url('assets/kv/paper-tear-a.svg')}
+@media(max-width:700px){.comparison-section::before{mask-image:url('assets/kv/paper-tear-b-sm.svg');-webkit-mask-image:url('assets/kv/paper-tear-b-sm.svg')}.comparison-section::after{mask-image:url('assets/kv/paper-tear-a-sm.svg');-webkit-mask-image:url('assets/kv/paper-tear-a-sm.svg')}}
+
+/* Floral como parte da composição: três espécies, escalas e posições distintas. */
+.tutorial{position:relative;isolation:isolate;overflow:clip}
+.tutorial-floral{position:absolute;right:15px;top:35px;width:220px;height:280px;object-fit:contain;pointer-events:none;transform:rotate(14deg);z-index:-1}
+.tutorial .section-heading{padding-right:255px;min-height:240px}
+.purchase-floral{position:absolute;left:max(12px,calc((100% - 1180px)/2));top:20px;width:280px;height:280px;object-fit:contain;pointer-events:none;transform:rotate(-16deg)}
+.buy-section .section-heading{max-width:620px;margin-inline:auto;padding-inline:30px}
+@media(max-width:900px) and (min-width:701px){.purchase-floral{width:190px;height:220px;left:-60px;top:30px}}
+@media(max-width:700px){.tutorial-floral{width:110px;height:170px;right:-15px;top:36px;transform:rotate(10deg)}.tutorial .section-heading{padding-right:100px;min-height:0}.tutorial .section-heading h2{font-size:34px}.tutorial .section-heading.split>p{font-size:14px}.purchase-floral{left:auto;right:-26px;top:24px;width:145px;height:150px;transform:rotate(-12deg)}.buy-section .section-heading{padding:0 105px 0 0;margin-inline:0}.buy-section .section-heading h2{font-size:38px}}
+.banner-link{position:relative}
+.banner-link[data-current="0"]::after{content:'';position:absolute;left:-2%;bottom:-4%;width:24%;height:40%;background:url('assets/botanical/anturio-campanha.webp') center/contain no-repeat;pointer-events:none;transform:rotate(-14deg)}
+@media(max-width:700px){.banner-link[data-current="0"]::after{width:32%;height:25%;left:-6%;bottom:-3%}}

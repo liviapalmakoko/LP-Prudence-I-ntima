@@ -8,6 +8,7 @@
 -->
 <html lang="pt-BR"><head><meta charset="utf-8"><title>Banners Prudence Íntima</title>
 <style>
+@font-face{font-family:'Blinka Serif';src:url('../dist/assets/fonts/BlinkaSerif.otf') format('opentype')}
 @font-face{font-family:'Bold Eater';src:url('../dist/assets/fonts/BoldEater.woff2') format('woff2')}
 @font-face{font-family:'Alte Haas';src:url('../dist/assets/fonts/AlteHaasGroteskRegular.woff2') format('woff2');font-weight:400}
 @font-face{font-family:'Alte Haas';src:url('../dist/assets/fonts/AlteHaasGroteskBold.woff2') format('woff2');font-weight:700}
@@ -22,7 +23,7 @@ body{background:#777}
 .shadow{filter:drop-shadow(18px 26px 22px #44001133)}
 .tape{height:46px;clip-path:polygon(2% 12%,98% 0,100% 86%,0 100%)}
 .copy{z-index:5}
-.label{display:inline-block;background:var(--yellow);font-weight:700;font-size:22px;letter-spacing:4px;padding:14px 22px;rotate:-3deg;margin-bottom:34px}
+.label{display:inline-block;background:var(--yellow);font-weight:700;font-size:22px;letter-spacing:4px;padding:14px 22px;rotate:0deg;margin-bottom:34px}
 .lead{font-family:'Bold Eater',sans-serif;font-size:96px;line-height:.98}
 .hero{font-family:'Bold Eater',sans-serif;font-size:236px;line-height:.9;margin-top:6px}
 .sub{font-size:31px;line-height:1.4;margin-top:34px;max-width:620px}
@@ -33,19 +34,33 @@ body{background:#777}
 .desktop .hero-lencos{font-size:190px;margin-top:14px}
 .mobile .hero-lencos{font-size:168px;margin-top:12px}
 [hidden]{display:none!important}
+
+/* Direção floral da reunião de 08/10. */
+:root{--cream:#f2e9df;--pink:#ee91b5;--blue:#8cacd8;--yellow:#eddfab;--lavender:#dec5df}
+.lead,.mobile .lead{font-family:'Blinka Serif',Georgia,serif;font-size:106px;font-style:normal;font-weight:400;line-height:1.05;letter-spacing:-3px}
+.hero,.mobile .hero{font-size:200px}
+.desktop .hero-lencos{font-size:170px}
+.mobile .hero-lencos{font-size:150px}
+.label{background:transparent;padding-left:0;rotate:0deg;transform:none;font-style:normal;font-size:20px}
+.tape{opacity:.35}
+.cut[src*="element-3"],.cut[src*="element-7"]{display:none}
+.cut[src*="element-6"]{opacity:.75}.cut[src*="element-9"]{opacity:.35}
+.cut[src*="element-8"],.cut[src*="element-5"]{display:none}
+.cut[src*="element-4"]{opacity:.7}
 </style></head><body>
 
 <!-- 2 · INFINITY · desktop -->
 <div class="stage desktop" id="infinity-desktop" hidden>
+  <img class="campaign-floral" src="../dist/assets/botanical/orquidea-completa.webp" style="width:330px;right:45px;top:325px;rotate:0deg;z-index:1">
   <img class="cut" src="../dist/assets/kv/elements/element-6.webp" style="width:1260px;left:790px;top:110px;rotate:-5deg">
   <img class="cut" src="../dist/assets/kv/elements/element-8.webp" style="width:660px;right:-150px;top:-40px;rotate:12deg">
   <img class="cut" src="../dist/assets/kv/elements/element-4.webp" style="width:560px;left:1460px;top:600px;rotate:24deg">
   <img class="cut" src="../dist/assets/kv/elements/element-9.webp" style="width:600px;left:-190px;bottom:-130px;rotate:14deg">
   <img class="cut" src="../dist/assets/kv/elements/element-3.webp" style="width:118px;left:930px;top:300px;rotate:-14deg">
-  <div class="tape" style="width:300px;left:1600px;top:190px;background:var(--pink);rotate:-18deg"></div>
-  <img class="cut shadow" src="../arquivo-fora-do-site/assets/kv/estojo.webp" style="width:190px;left:1690px;top:250px;rotate:14deg">
-  <img class="cut shadow" src="../dist/assets/kv/embalagem.webp" style="width:800px;left:960px;top:250px;rotate:-3deg">
-  <img class="cut shadow" src="../dist/assets/kv/disco.webp" style="width:205px;left:1560px;top:560px;rotate:-80deg">
+  <div class="tape" style="width:300px;left:1380px;top:190px;background:var(--pink);rotate:-18deg"></div>
+  <img class="cut shadow" src="../arquivo-fora-do-site/assets/kv/estojo.webp" style="width:190px;left:1470px;top:250px;rotate:14deg">
+  <img class="cut shadow" src="../dist/assets/kv/embalagem.webp" style="width:800px;left:740px;top:250px;rotate:-3deg">
+  <img class="cut shadow" src="../dist/assets/kv/disco.webp" style="width:205px;left:1340px;top:560px;rotate:-80deg">
   <div class="copy" style="left:150px;top:215px">
     <span class="label">PRUDENCE INFINITY</span>
     <p class="lead">A LIBERDADE<br>VEM DE</p>
@@ -56,6 +71,7 @@ body{background:#777}
 
 <!-- 2 · INFINITY · celular -->
 <div class="stage mobile" id="infinity-mobile" hidden>
+  <img class="campaign-floral" src="../dist/assets/botanical/orquidea-completa.webp" style="width:260px;right:25px;top:700px;rotate:0deg;z-index:1">
   <img class="cut" src="../dist/assets/kv/elements/element-6.webp" style="width:1250px;left:-90px;top:640px;rotate:-6deg">
   <img class="cut" src="../dist/assets/kv/elements/element-8.webp" style="width:520px;right:-170px;top:560px;rotate:12deg">
   <img class="cut" src="../dist/assets/kv/elements/element-4.webp" style="width:440px;left:-170px;top:1000px;rotate:-18deg">
@@ -74,6 +90,7 @@ body{background:#777}
 
 <!-- 3 · LENÇOS · desktop -->
 <div class="stage desktop" id="lencos-desktop" hidden>
+  <img class="campaign-floral" src="../dist/assets/botanical/anturio-campanha.webp" style="width:350px;left:1490px;top:680px;rotate:0deg;z-index:1">
   <img class="cut" src="../dist/assets/kv/elements/element-4.webp" style="width:900px;left:1080px;top:110px;rotate:-74deg">
   <img class="cut" src="../dist/assets/kv/elements/element-5.webp" style="width:560px;right:-150px;top:-120px;rotate:8deg">
   <img class="cut" src="../dist/assets/kv/elements/element-7.webp" style="width:250px;right:-30px;top:420px;rotate:-6deg">
@@ -91,6 +108,7 @@ body{background:#777}
 
 <!-- 3 · LENÇOS · celular -->
 <div class="stage mobile" id="lencos-mobile" hidden>
+  <img class="campaign-floral" src="../dist/assets/botanical/anturio-campanha.webp" style="width:290px;left:750px;top:1050px;rotate:0deg;z-index:1">
   <img class="cut" src="../dist/assets/kv/elements/element-4.webp" style="width:880px;left:140px;top:520px;rotate:-74deg">
   <img class="cut" src="../dist/assets/kv/elements/element-5.webp" style="width:430px;right:-150px;top:580px;rotate:8deg">
   <img class="cut" src="../dist/assets/kv/elements/element-9.webp" style="width:520px;left:-200px;bottom:-110px;rotate:-6deg">

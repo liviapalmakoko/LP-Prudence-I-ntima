@@ -130,3 +130,72 @@ Referência aprovada pelo cliente: https://historias.useprudence.com.br/
 ## Arquivos fora do site
 
 `arquivo-fora-do-site/` guarda o que saiu de `dist` em 08/10/2026 por não ser usado por nenhuma página: PNGs originais substituídos por WebP, derivados do KV sem uso, `BoldEater.otf` e o CSS/JS das rodadas anteriores. A pasta fica no repositório, mas não é publicada. Ao reaproveitar um arquivo, copie-o de volta para `dist/assets` com o mesmo caminho.
+
+## Feedback da reunião de 08/10 aplicado em 23/10/2026
+
+A versão local incorpora uma abertura floral com o conceito “Todo ciclo tem seu ritual”, paleta em pele, rosa suave e vinho, títulos editoriais serifados e recortes florais em benefícios, tutorial, creators e compra. Os banners 2 e 3 foram reexportados com essa direção; o primeiro mantém o KV oficial recebido. Ajustes concentrados em `dist/ritual.css`, carregado após `site.css`, com fonte editável dos banners em `fontes-banners/banners.html`.
+
+O floral original está em `dist/assets/botanical/orquidea-ritual.webp`, gerado com a ferramenta integrada ImageGen e otimizado em WebP com transparência. Prompt: “Create a premium botanical photographic cutout for an adult feminine menstrual wellness brand website. Single sculptural open pale blush pink orchid with two smaller petals and a gently curved burgundy stem, restrained elegant sensual botanical shapes, delicate realistic veining, warm skin-like peach and dusty rose tones with deep wine accents. Editorial macro studio photography, soft side lighting, sophisticated natural texture, not illustration, no paper shapes, no text, no logos, no objects, no human anatomy. Entire flower fully visible isolated on genuinely transparent background. Tall balanced composition suitable to anchor the edges of an editorial web page. Output asset only.”
+
+Validação em Chrome: 1440, 390 e 320 px, sem overflow horizontal da página, imagens quebradas ou erros JS. Menu móvel e troca de banner verificados. Arquivos de referência da apresentação interna não foram importados.
+
+Pendências: Blinka Serif e comprovação de licença web, fotos e vídeos finais, links de produto e aprovação da marca. Georgia é provisória. A animação anatômica sugerida não foi criada: depende de referência técnica validada para o Infinity; o player demonstrativo continua preparado para receber o vídeo. Datas históricas acima devem ser reconfirmadas; a transcrição fala em entrega de 20 a 25 de outubro e lançamento em novembro, condicionado à disponibilidade comercial. Alterações desta rodada não publicadas.
+
+### Revisão após feedback de repetição floral — 23/10/2026
+
+Esta revisão substitui a direção da rodada anterior: a abertura editorial extra foi removida e o conceito de ritual passou para a apresentação do Infinity. A orquídea aparece uma única vez na LP, como fundo da composição do produto; foi retirada das demais seções e dos banners 2/3. O azul e o rosa do KV voltam como pontos de contraste. Títulos combinam Georgia provisória com Bold Eater. Removidos fitas, giros e rasgos repetidos nas áreas de benefícios, tutorial, creators e compra. Capas do blog recuperam a cor original para dialogar com o KV.
+
+Os players sem mídia foram compactados. `mountVideo` aplica `.has-video` ao receber um arquivo, recuperando as proporções de vídeo originais; creators recuperam a altura 9:16 quando houver mídia configurada. Menu, CTA fixo e três banners preservados. Validação no Chrome em 1440, 390 e 320 px: imagens carregadas, sem overflow horizontal da página ou erros JS, menu e carrossel funcionais. Versão local, sem publicação.
+
+Para concluir: arquivo Blinka Serif e licença web, fotos finais dos produtos (especialmente a embalagem correta dos lenços), vídeo demonstrativo e vídeos de creators, links finais de compra por produto e validação dos textos/instruções pela marca. A animação de inserção/retirada depende de referência técnica aprovada para o Infinity.
+
+### Blinka e conferência do Drive — 23/10/2026
+
+Blinka Serif recebida em OTF e aplicada localmente em `dist/assets/fonts/BlinkaSerif.otf`, títulos/apoios editoriais da LP e fonte editável dos banners 2/3. Banners reexportados; layout conferido em 1440, 390 e 320 px. A comprovação de licença web ainda não foi encontrada; o arquivo da fonte não equivale à licença.
+
+Pasta conferida pelo navegador: https://drive.google.com/drive/folders/1nTgrljMSSIvceidq5BfyknEut45g0DjJ . O conector não listou filhos; o navegador permitiu a leitura pública.
+
+- FONTS: Blinka Serif, Bold Eater e The Youth; nenhum documento de licença listado.
+- KV: PSD principal e desdobramentos TELA 1, TELA 2, TELA 3 (PSD) e TELA 4, incluindo PNGs das telas 1/2/4. Prévias apresentam ilustrações, ritual e flores; não são fotos do shooting.
+- PRODUTO: três mockups do Infinity (disco, estojo e embalagem), com os mesmos nomes dos arquivos já disponíveis localmente.
+- REFS: 12 imagens WebP com flores em macro, líquidos, texturas e uma composição com romã. Tratadas como referências visuais, sem comprovação de direitos para publicação. Não incorporadas à LP nesta conferência.
+- MATERIAL: nenhum arquivo visível na consulta pública.
+
+Não foram encontrados vídeos finais nem fotos dos lenços nas pastas examinadas. Permanecem pendentes esses materiais, links finais dos produtos, licença web e validação dos textos/instruções. Alterações apenas locais.
+
+### Novas imagens a partir da direção de REFS — 23/10/2026
+
+Três imagens originais geradas com ImageGen foram aplicadas às capas do blog: `ciclo-botanico.webp` (antúrio em vinho), `rotina-sensorial.webp` (água e linho) e `reutilizavel-floral.webp` (pétala em curva sobre azul). Todas em `dist/assets/blog/`, com versões anteriores preservadas. Prompts completos e procedência em `fontes-banners/prompts-imagens.md`. Referências do Drive orientaram a direção pela observação visual; não foram usadas como arquivos de entrada nem copiadas para o site. Artes ilustrativas de atmosfera, sem representar produto ou instruções de uso. Recortes conferidos em desktop e celular, sem imagens quebradas, erros JS ou overflow horizontal da página. Alterações locais.
+
+Preferência da Lívia após visualizar as novas imagens: manter as três capas ilustradas anteriores no blog. Referências e textos alternativos restaurados em `dist/index.html`; os três WebP novos continuam preservados para avaliação de outros usos, sem aplicação automática em outra seção.
+
+### Ajustes pontuais após revisão visual — 23/10/2026
+
+- Textos dos banners retos, sem rotação das etiquetas nem itálico artificial; Blinka mantida.
+- Benefícios com novos SVGs lineares finos e estáticos.
+- Tutorial novamente em 16:9, passos alinhados pelo topo e aviso centralizado, sem play enquanto não houver mídia.
+- Comparativo com três PNGs transparentes derivados dos arquivos já presentes: mockup oficial Infinity e imagens genéricas de absorventes externo/interno.
+- Rasgos do comparativo usam máscaras com as cores das seções vizinhas, eliminando o bege antigo.
+- Orquídea removida da apresentação do Infinity a pedido da Lívia; produto isolado dentro do arco.
+
+### Presença floral ampliada — 23/10/2026
+
+Após feedback de que a direção estava pouco florida, florais transparentes passam a compor os três banners, a abertura do tutorial, o FAQ e a compra. Antúrio em vinho, orquídea rosa e pétala curva variam de escala/posição. O produto continua isolado na apresentação e as capas ilustradas do blog foram preservadas. Novo recorte do antúrio em `dist/assets/botanical/anturio-campanha.webp`, editado com ImageGen a partir da arte gerada; prompt em `fontes-banners/prompts-imagens.md`. Banners 2/3 reexportados. A primeira arte oficial permanece como base, com floral sobreposto via CSS somente no slide 1. Revisão responsiva em 1440, 390 e 320 px sem overflow horizontal da página, imagens quebradas ou erros JS.
+
+### Colagem orientada pelo primeiro banner — 23/10/2026
+
+A composição passa a seguir o primeiro banner como referência principal: papéis azul/lilás/rosa em camadas, listras, gravura e escultura extraídos do KV, com flores inteiras combinadas aos elementos. Regras em `dist/collage.css`. Novas orquídea e flor de copo-de-leite completas substituem os florais com cortes abruptos; prompts e arquivos registrados em `fontes-banners/prompts-imagens.md`. Flores mantidas inteiras dentro da área disponível, com `object-fit:contain`, sem rotação que as corte nas bordas. Textos permanecem retos, benefícios lineares e comparativo fotográfico preservados. Blog continua com as capas ilustradas escolhidas pela Lívia. Conferência visual de página inteira em desktop e celular e validação em 1440/390/320 px sem imagens quebradas, erros JS ou overflow horizontal da página. Banners 2/3 reexportados.
+
+### Refinos por captura — 23/10/2026
+
+Listras da apresentação substituídas pela escultura do KV. No tutorial, flor e papel separados e listras levadas à margem inferior. Creators com escultura ancorada ao papel no rodapé, liberando o cabeçalho. Fechamento do comparativo em um eixo de leitura (chamada, explicação, ressalva, CTA). FAQ com flor maior e papel azul menor. Cabeçalho de compra alinhado aos cards e flor na margem oposta. Layout validado em 1440/390/320 px; sem erros JS, imagens quebradas ou overflow horizontal da página.
+
+### Recomposição da compra — 23/10/2026
+
+Título e floral passam a formar uma coluna editorial ao lado dos dois produtos no desktop. Cards verticais com embalagens maiores, informações e botões alinhados. No celular, cards horizontais preservam a leitura e os alvos de toque. Retirado recorte solto na borda e reduzida a altura do cabeçalho/canais de compra. Conferência visual em desktop e celular sem overflow horizontal, imagens quebradas ou erros JS.
+
+### Consolidação da revisão — 23/10/2026
+
+A versão final desta rodada mantém compra lado a lado no desktop, comparativo em colunas sobre fundo vinho, FAQ original com acordeão em uma coluna e interrogação Blinka com contorno creme. Títulos e CTAs de fechamento centralizados, espaçamentos refinados, florais/reposicionamento dos banners e movimento leve com suporte a movimento reduzido. As notas anteriores registram etapas intermediárias e não descrevem necessariamente o estado atual. Blinka já aplicada; licença web permanece pendente.
+
+Conferência final: Chrome em 1440/390/320 px, sem overflow da página, imagens quebradas ou erros JS; menu e carrossel verificados. Relatório de encaminhamento salvo localmente em `entregas/relatorio-atualizacao-23-10-2026.txt` (pasta não versionada).

@@ -8,6 +8,7 @@ function changeSlide(index){
  img.src=slide.desktop;img.alt=slide.alt;
  document.getElementById('banner-caption').textContent=slide.caption;
  document.getElementById('banner-link').href=slide.href;
+ document.getElementById('banner-link').dataset.current=String(currentSlide);
  const cta=document.getElementById('banner-cta');cta.href=slide.href;cta.textContent=slide.cta;
  document.getElementById('slide-count').textContent=String(currentSlide+1).padStart(2,'0')+' / '+String(content.banners.length).padStart(2,'0');
  document.querySelectorAll('[data-slide]').forEach((button,i)=>{if(i===currentSlide)button.setAttribute('aria-current','true');else button.removeAttribute('aria-current')});
@@ -30,10 +31,12 @@ nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMenu()});
 function mountVideo(frame,item){
  if(!item||!item.src)return;
+ frame.classList.add('has-video');
  const video=document.createElement('video');video.src=item.src;video.controls=true;video.preload='metadata';video.playsInline=true;video.setAttribute('aria-label',item.title||'Vídeo Prudence Íntima');if(item.poster)video.poster=item.poster;
  frame.replaceChildren(video);
 }
 mountVideo(document.getElementById('tutorial-media'),content.videos.tutorial);
+document.querySelector('.creators-section').classList.toggle('awaiting-videos',!content.videos.creators.some(item=>item.src));
 content.videos.creators.forEach((item,i)=>mountVideo(document.querySelector(`[data-creator="${i}"]`),item));
 content.retailers.forEach(item=>{const link=document.createElement('a');link.href=item.url;link.target='_blank';link.rel='noopener';if(item.logo){const img=document.createElement('img');img.src=item.logo;img.alt=item.name;link.append(img)}const div=document.createElement('div'),name=document.createElement('strong'),description=document.createElement('span'),arrow=document.createElement('span');name.textContent=item.name;description.textContent=item.description;arrow.textContent='Visitar a loja ↗';div.append(name,description);link.append(div,arrow);document.getElementById('retailer-list').append(link)});
 const dialog=document.getElementById('privacy-dialog');document.getElementById('privacy-open').addEventListener('click',()=>dialog.showModal());dialog.querySelector('button').addEventListener('click',()=>dialog.close());
@@ -84,3 +87,10 @@ addEventListener('scroll',queueProduct,{passive:true});
 addEventListener('resize',queueProduct);
 motionPreference.addEventListener('change',queueProduct);
 queueProduct();
+
+// Animações da colagem só rodam enquanto o elemento está próximo da tela.
+const collageObserver=new IntersectionObserver(entries=>entries.forEach(({target,isIntersecting})=>{
+ target.classList.toggle('collage-moving',isIntersecting);
+ target.classList.toggle('collage-active',isIntersecting);
+}),{rootMargin:'40px'});
+document.querySelectorAll('.faq-accent,.faq-accent img,.creator-top-collage,.creator-top-collage img,.tutorial-floral,.purchase-floral,.faq-art,.faq-art img,.benefit-collage img,.creator-collage,.creator-collage img,.product-intro,.product-intro>.kv-blue,.tutorial,.buy-section,.banner-link').forEach(el=>collageObserver.observe(el));
