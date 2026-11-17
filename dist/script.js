@@ -1,14 +1,26 @@
 const content=window.PRUDENCE_CONTENT;
 let currentSlide=0;
+const mobileBanner=matchMedia('(max-width: 700px)');
+function updateBannerAlt(){
+ const slide=content.banners[currentSlide];
+ document.getElementById('banner-image').alt=(mobileBanner.matches&&slide.mobileAlt)||slide.alt;
+}
+mobileBanner.addEventListener('change',updateBannerAlt);
 function changeSlide(index){
  currentSlide=(index+content.banners.length)%content.banners.length;
  const slide=content.banners[currentSlide];
  const img=document.getElementById('banner-image');
  document.getElementById('banner-mobile').srcset=slide.mobile||slide.desktop;
- img.src=slide.desktop;img.alt=slide.alt;
+ img.src=slide.desktop;updateBannerAlt();
  document.getElementById('banner-caption').textContent=slide.caption;
- document.getElementById('banner-link').href=slide.href;
- document.getElementById('banner-link').dataset.current=String(currentSlide);
+ const link=document.getElementById('banner-link');
+ link.href=slide.href;
+ link.classList.toggle('banner-link--photo',Boolean(slide.editorial));
+ document.getElementById('banner-editorial').hidden=!slide.editorial;
+ if(slide.editorial){
+  document.getElementById('banner-title-lead').textContent=slide.editorial.lead;
+  document.getElementById('banner-title-accent').textContent=slide.editorial.accent;
+ }
  const cta=document.getElementById('banner-cta');cta.href=slide.href;cta.textContent=slide.cta;
  document.getElementById('slide-count').textContent=String(currentSlide+1).padStart(2,'0')+' / '+String(content.banners.length).padStart(2,'0');
  document.querySelectorAll('[data-slide]').forEach((button,i)=>{if(i===currentSlide)button.setAttribute('aria-current','true');else button.removeAttribute('aria-current')});
@@ -36,7 +48,6 @@ function mountVideo(frame,item){
  frame.replaceChildren(video);
 }
 mountVideo(document.getElementById('tutorial-media'),content.videos.tutorial);
-document.querySelector('.creators-section').classList.toggle('awaiting-videos',!content.videos.creators.some(item=>item.src));
 content.videos.creators.forEach((item,i)=>mountVideo(document.querySelector(`[data-creator="${i}"]`),item));
 content.retailers.forEach(item=>{const link=document.createElement('a');link.href=item.url;link.target='_blank';link.rel='noopener';if(item.logo){const img=document.createElement('img');img.src=item.logo;img.alt=item.name;link.append(img)}const div=document.createElement('div'),name=document.createElement('strong'),description=document.createElement('span'),arrow=document.createElement('span');name.textContent=item.name;description.textContent=item.description;arrow.textContent='Visitar a loja ↗';div.append(name,description);link.append(div,arrow);document.getElementById('retailer-list').append(link)});
 const dialog=document.getElementById('privacy-dialog');document.getElementById('privacy-open').addEventListener('click',()=>dialog.showModal());dialog.querySelector('button').addEventListener('click',()=>dialog.close());
@@ -45,11 +56,13 @@ dialog.addEventListener('click',event=>{if(event.target===dialog){const r=dialog
 // Movimento editorial: entradas únicas e animações apenas nas áreas visíveis.
 const motionPreference=matchMedia('(prefers-reduced-motion: reduce)');
 const revealTargets=document.querySelectorAll('.section-heading,.product-copy,.product-portrait,.benefit-grid article,.tutorial-layout,.creator-grid article,.table-scroll,.faq-list,.journal-masthead,.blog-grid article,.purchase-grid article');
-const motionTargets=document.querySelectorAll('.kv-decoration,.product-portrait,.media-frame,.benefit-drawing');
+const motionTargets=document.querySelectorAll('.media-frame,.benefit-drawing');
 const revealObserver=new IntersectionObserver(entries=>{
  entries.forEach(({target,isIntersecting})=>{
   if(!isIntersecting)return;
-  if(!motionPreference.matches){
+  if(!motionPreference.matches && target.matches('.product-portrait')){
+   target.classList.add('product-entered');
+  }else if(!motionPreference.matches){
    const siblings=[...target.parentElement.children];
    const delay=target.matches('article')?Math.min(siblings.indexOf(target)*85,240):0;
    target.animate([{opacity:.35,translate:'0 22px'},{opacity:1,translate:'0 0'}],{duration:650,delay,easing:'cubic-bezier(.2,.65,.3,1)'});
@@ -60,37 +73,3 @@ const revealObserver=new IntersectionObserver(entries=>{
 revealTargets.forEach(target=>revealObserver.observe(target));
 const visibilityObserver=new IntersectionObserver(entries=>entries.forEach(({target,isIntersecting})=>target.classList.toggle('motion-visible',isIntersecting)),{rootMargin:'40px'});
 motionTargets.forEach(target=>visibilityObserver.observe(target));
-
-// Produto acompanha a rolagem e o cursor sem simular ângulos inexistentes.
-const productStage=document.querySelector('.product-portrait');
-const productImage=productStage.querySelector('img');
-let pointerX=0,pointerY=0,productFrame=0;
-function paintProduct(){
- productFrame=0;
- if(motionPreference.matches){productStage.style.removeProperty('--product-turn');productStage.style.removeProperty('--pointer-x');productStage.style.removeProperty('--pointer-y');return}
- const rect=productStage.getBoundingClientRect();
- const progress=Math.max(0,Math.min(1,(innerHeight-rect.top)/(innerHeight+rect.height)));
- productStage.style.setProperty('--product-turn',`${-87+(progress-.5)*70}deg`);
- productStage.style.setProperty('--pointer-x',`${pointerX*9+pointerY*5}deg`);
- productStage.style.setProperty('--pointer-y',`${-pointerY*12}deg`);
-}
-function queueProduct(){if(!productFrame)productFrame=requestAnimationFrame(paintProduct)}
-productStage.addEventListener('pointermove',event=>{
- if(event.pointerType==='touch')return;
- const rect=productStage.getBoundingClientRect();
- pointerX=(event.clientX-rect.left)/rect.width*2-1;
- pointerY=(event.clientY-rect.top)/rect.height*2-1;
- queueProduct();
-});
-productStage.addEventListener('pointerleave',()=>{pointerX=0;pointerY=0;queueProduct()});
-addEventListener('scroll',queueProduct,{passive:true});
-addEventListener('resize',queueProduct);
-motionPreference.addEventListener('change',queueProduct);
-queueProduct();
-
-// Animações da colagem só rodam enquanto o elemento está próximo da tela.
-const collageObserver=new IntersectionObserver(entries=>entries.forEach(({target,isIntersecting})=>{
- target.classList.toggle('collage-moving',isIntersecting);
- target.classList.toggle('collage-active',isIntersecting);
-}),{rootMargin:'40px'});
-document.querySelectorAll('.faq-accent,.faq-accent img,.creator-top-collage,.creator-top-collage img,.tutorial-floral,.purchase-floral,.faq-art,.faq-art img,.benefit-collage img,.creator-collage,.creator-collage img,.product-intro,.product-intro>.kv-blue,.tutorial,.buy-section,.banner-link').forEach(el=>collageObserver.observe(el));

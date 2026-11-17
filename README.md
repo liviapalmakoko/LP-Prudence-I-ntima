@@ -199,3 +199,35 @@ Título e floral passam a formar uma coluna editorial ao lado dos dois produtos 
 A versão final desta rodada mantém compra lado a lado no desktop, comparativo em colunas sobre fundo vinho, FAQ original com acordeão em uma coluna e interrogação Blinka com contorno creme. Títulos e CTAs de fechamento centralizados, espaçamentos refinados, florais/reposicionamento dos banners e movimento leve com suporte a movimento reduzido. As notas anteriores registram etapas intermediárias e não descrevem necessariamente o estado atual. Blinka já aplicada; licença web permanece pendente.
 
 Conferência final: Chrome em 1440/390/320 px, sem overflow da página, imagens quebradas ou erros JS; menu e carrossel verificados. Relatório de encaminhamento salvo localmente em `entregas/relatorio-atualizacao-23-10-2026.txt` (pasta não versionada).
+
+## Revisão aprovada por Lívia em 17/11/2026
+
+A proposta A passa a orientar a LP inteira. A camada consolidada está em
+`dist/revisao.css`, carregada após os estilos históricos.
+
+- Banners com formato consistente, CTA sobre a imagem e controles em chevron.
+  O primeiro mantém o KV. O segundo usa a foto DSCF8528 do shooting, com corte
+  desktop ajustado para cima e enquadramento próprio no celular. O terceiro
+  mantém a arte dos lenços.
+- Apresentação do Infinity com estojo em destaque sutil junto ao texto,
+  benefícios reorganizados e entrada suave do disco.
+- Demonstrativo em mockup 16:9 e três espaços de creators em 9:16.
+- Comparativo com ícones sem fundos nas linhas de função e cuidados após uso.
+- FAQ com a foto DSCF9041 (estojo na nécessaire), texto separado da imagem e
+  acordeão preservado.
+- Blog com capas ilustradas, compra com mockups e rodapé com as marcas Prudence
+  e DKT South America agrupadas, assinatura institucional e Instagram
+  @prudenceintima.
+- Recortes e florais dispersos retirados na direção consolidada.
+
+As fotos publicadas nesta revisão são marcações fornecidas pela cliente,
+com a marca d'água NOMA preservada. Fontes da seleção:
+https://drive.google.com/drive/folders/1IXuSl5sdDfU03D1jLPLMQNvjW3saIZT0
+Logo DKT South America:
+https://drive.google.com/drive/folders/1F0-vB6MpGGasvSFYGU00yZeKE75Xld1a
+
+Conferências locais em Chrome desktop e celular, de 320 a 1440 px, com
+carrossel, menu, FAQ e rolagem lateral dos creators/comparativo funcionais.
+Permanecem para integração os arquivos finais do shooting e os vídeos.
+Também aguardam confirmação o link direto do Infinity, a embalagem final
+dos lenços, a validação técnica dos textos e a licença web da Blinka.
