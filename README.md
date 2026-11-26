@@ -231,3 +231,51 @@ carrossel, menu, FAQ e rolagem lateral dos creators/comparativo funcionais.
 Permanecem para integração os arquivos finais do shooting e os vídeos.
 Também aguardam confirmação o link direto do Infinity, a embalagem final
 dos lenços, a validação técnica dos textos e a licença web da Blinka.
+
+## Revisão da reunião com Isa — 25/11/2026
+
+Implementados os ajustes de navegação, hierarquia e conversão levantados na
+reunião de 24/11. O menu usa um fundo mais claro, diminui durante a rolagem e
+indica a seção atual. O carrossel passa a caber na primeira tela do desktop;
+o banner fotográfico apresenta o disco no próprio banner e o dos lenços foi
+recomposto em HTML/CSS, com embalagem maior e sem elementos sobre seu texto.
+
+A apresentação diferencia o estojo como benefício e aproxima o link de uso do
+disco. Benefícios centralizados; tutorial compacto com texto/passos e vídeo
+lado a lado no desktop. Comparativo antes dos creators, nota junto à tabela
+e CTA com o nome Infinity. O FAQ mantém a foto com altura estável, permite
+uma resposta aberta por vez e inclui link para a loja. Compra vem antes do
+blog, com produtos maiores, descrições abaixo dos nomes e sem repetir o
+bloco “Canais de compra”. Rodapé com ícones e áreas de clique do Instagram.
+
+Os três cards do blog permanecem visíveis, agora sem links e com “Em breve”,
+conforme confirmado por Lívia nesta rodada. Foram preservados os três temas
+existentes, equilibrando as colunas sem inventar um quarto artigo. Cores
+finais, identidade/embalagem, vídeos finais e URL direta do Infinity continuam
+dependendo dos materiais/definições do cliente. O botão do Infinity mantém a
+DKT Store como destino enquanto o link direto não chega. O favicon preserva
+o símbolo reduzido existente, em círculo rosa com traço claro.
+
+As alterações estão concentradas em `dist/index.html`, `dist/revisao.css`,
+`dist/script.js`, `dist/content.js` e nos ícones de navegador. Os arquivos de
+banners anteriores continuam guardados; o banner dos lenços exibido na LP é
+composto por `.banner-wipes`, com a embalagem original disponível em assets.
+
+Correção da revisão: retiradas as legendas externas dos três banners. A
+explicação do disco permanece dentro do banner fotográfico; a faixa inferior
+contém apenas os indicadores do carrossel.
+
+Banner dos lenços revisto novamente por Lívia: composição com os recortes
+originais do KV (azul, rosa, lilás, grafismo anatômico e texturas vinho),
+com embalagem de maior resolução da fonte já existente. As decorações
+ficam atrás do produto e não cobrem seus textos.
+
+## Fechamento dos ajustes internos — 26/11/2026
+
+Ícones dos três benefícios substituídos por SVGs Lucide 0.468.0 (feather,
+clock-3 e repeat-2), com traço consistente e licença preservada em
+`dist/assets/icons/LICENSE-lucide.txt`. O blog agora tem um destaque e três
+cards menores, com as colunas equilibradas no desktop. O novo card sinaliza
+conteúdo futuro e reutiliza os elementos de colagem da campanha; não foi
+criado um artigo interno nem estimado um tempo de leitura para ele. Todos
+os quatro cards permanecem sem links e com “Em breve”, conforme Lívia pediu.

@@ -12,14 +12,16 @@ function changeSlide(index){
  const img=document.getElementById('banner-image');
  document.getElementById('banner-mobile').srcset=slide.mobile||slide.desktop;
  img.src=slide.desktop;updateBannerAlt();
- document.getElementById('banner-caption').textContent=slide.caption;
  const link=document.getElementById('banner-link');
  link.href=slide.href;
  link.classList.toggle('banner-link--photo',Boolean(slide.editorial));
+ link.classList.toggle('banner-link--wipes',slide.kind==='wipes');
+ document.getElementById('banner-wipes').hidden=slide.kind!=='wipes';
  document.getElementById('banner-editorial').hidden=!slide.editorial;
  if(slide.editorial){
   document.getElementById('banner-title-lead').textContent=slide.editorial.lead;
   document.getElementById('banner-title-accent').textContent=slide.editorial.accent;
+  document.getElementById('banner-description').textContent=slide.editorial.description||'';
  }
  const cta=document.getElementById('banner-cta');cta.href=slide.href;cta.textContent=slide.cta;
  document.getElementById('slide-count').textContent=String(currentSlide+1).padStart(2,'0')+' / '+String(content.banners.length).padStart(2,'0');
@@ -49,7 +51,6 @@ function mountVideo(frame,item){
 }
 mountVideo(document.getElementById('tutorial-media'),content.videos.tutorial);
 content.videos.creators.forEach((item,i)=>mountVideo(document.querySelector(`[data-creator="${i}"]`),item));
-content.retailers.forEach(item=>{const link=document.createElement('a');link.href=item.url;link.target='_blank';link.rel='noopener';if(item.logo){const img=document.createElement('img');img.src=item.logo;img.alt=item.name;link.append(img)}const div=document.createElement('div'),name=document.createElement('strong'),description=document.createElement('span'),arrow=document.createElement('span');name.textContent=item.name;description.textContent=item.description;arrow.textContent='Visitar a loja ↗';div.append(name,description);link.append(div,arrow);document.getElementById('retailer-list').append(link)});
 const dialog=document.getElementById('privacy-dialog');document.getElementById('privacy-open').addEventListener('click',()=>dialog.showModal());dialog.querySelector('button').addEventListener('click',()=>dialog.close());
 dialog.addEventListener('click',event=>{if(event.target===dialog){const r=dialog.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)dialog.close()}});
 
@@ -73,3 +74,29 @@ const revealObserver=new IntersectionObserver(entries=>{
 revealTargets.forEach(target=>revealObserver.observe(target));
 const visibilityObserver=new IntersectionObserver(entries=>entries.forEach(({target,isIntersecting})=>target.classList.toggle('motion-visible',isIntersecting)),{rootMargin:'40px'});
 motionTargets.forEach(target=>visibilityObserver.observe(target));
+
+// Menu compacto e localização atual, inclusive ao navegar por âncoras.
+const header=document.querySelector('.site-header');
+const sectionLinks=[...document.querySelectorAll('.site-header a[href^="#"]')]
+ .filter(a=>a.hash && a.hash!=='#inicio')
+ .map(link=>({link,section:document.querySelector(link.hash)}))
+ .filter(item=>item.section)
+ .sort((a,b)=>a.section.compareDocumentPosition(b.section)&Node.DOCUMENT_POSITION_FOLLOWING?-1:1);
+let scrollPending=false;
+function updateNavigation(){
+ header.classList.toggle('is-compact',window.scrollY>80);
+ const offset=header.getBoundingClientRect().bottom+64;
+ let active=null;
+ for(const item of sectionLinks){if(item.section.getBoundingClientRect().top<=offset)active=item.link;}
+ sectionLinks.forEach(({link})=>{if(link===active)link.setAttribute('aria-current','location');else link.removeAttribute('aria-current');});
+ scrollPending=false;
+}
+window.addEventListener('scroll',()=>{if(!scrollPending){scrollPending=true;requestAnimationFrame(updateNavigation);}},{passive:true});
+window.addEventListener('resize',updateNavigation);
+window.addEventListener('pageshow',updateNavigation);
+updateNavigation();
+// name oferece exclusividade nativa; o evento mantém compatibilidade com navegadores antigos.
+const questions=[...document.querySelectorAll('.faq-list details')];
+questions.forEach(question=>question.addEventListener('toggle',()=>{
+ if(question.open)questions.forEach(other=>{if(other!==question)other.open=false;});
+}));

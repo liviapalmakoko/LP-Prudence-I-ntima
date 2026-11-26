@@ -2,9 +2,9 @@
 // alt descreve a arte para leitores de tela. href define o destino de imagem e botão.
 window.PRUDENCE_CONTENT = {
  banners: [
-  { desktop:'assets/kv/kv-desktop.webp', mobile:'assets/banners/01-kv-mobile.svg', alt:'Todo ciclo tem seu ritual. Prudence Íntima e disco menstrual Infinity.', caption:'Seu ciclo, seu ritual. Conheça a linha Prudence Íntima.', cta:'Comprar a linha ↗', href:'#onde-comprar' },
-  { desktop:'assets/shooting/banner-infinity-pessoa.webp', mobile:'assets/shooting/banner-infinity-pessoa.webp', editorial:{lead:'A liberdade',accent:'vem de dentro.'}, alt:'Pessoa segurando o disco menstrual Infinity dobrado entre os dedos.', caption:'Conheça o disco menstrual reutilizável Prudence Infinity.', cta:'Comprar Infinity ↗', href:'#comprar-infinity' },
-  { desktop:'assets/banners/03-lencos-desktop.webp?v=20261023-leitura', mobile:'assets/banners/03-lencos-mobile.webp?v=20261023-leitura', alt:'Cuidado que vai com você. Lenços umedecidos biodegradáveis Prudence Íntima.', caption:'Lenços biodegradáveis para acompanhar a sua rotina.', cta:'Comprar lenços ↗', href:'#comprar-lencos' }
+  { desktop:'assets/kv/kv-desktop.webp', mobile:'assets/banners/01-kv-mobile.svg', alt:'Todo ciclo tem seu ritual. Prudence Íntima e disco menstrual Infinity.', caption:'Seu ciclo, seu ritual. Conheça a linha Prudence Íntima.', cta:'Comprar a linha', href:'#onde-comprar' },
+  { desktop:'assets/shooting/banner-infinity-pessoa.webp', mobile:'assets/shooting/banner-infinity-pessoa.webp', editorial:{lead:'A liberdade',accent:'vem de dentro.',description:'Conheça o disco menstrual reutilizável Prudence Infinity.'}, alt:'Pessoa segurando o disco menstrual Infinity dobrado entre os dedos.', caption:'Conheça o disco menstrual reutilizável Prudence Infinity.', cta:'Comprar Infinity', href:'#comprar-infinity' },
+  { kind:'wipes', desktop:'assets/banners/03-lencos-desktop.webp?v=20261023-leitura', mobile:'assets/banners/03-lencos-mobile.webp?v=20261023-leitura', alt:'Cuidado que vai com você. Lenços umedecidos biodegradáveis Prudence Íntima.', caption:'Lenços biodegradáveis para acompanhar a sua rotina.', cta:'Comprar lenços', href:'#comprar-lencos' }
  ],
  videos: {
   tutorial: {src:null, poster:null, title:'Como colocar, retirar e cuidar do Infinity'},
