@@ -504,3 +504,84 @@ main .journal-masthead > p { font-family: 'Alte Haas',Arial,sans-serif; padding-
 .blog-side .blog-art img { position: absolute; inset: 0; width: 100%; height: 100%; }
 .blog-side .blog-art--upcoming img { width: 140%; inset: 0 auto 0 -20%; }
 .benefit-section .benefit-grid article .benefit-drawing svg.benefit-icon { width: 42px; height: 42px; }
+
+/* Banner lenços: chamada em duas linhas, com hierarquia próxima ao KV. */
+.wipes-title { max-width: none; font-size: clamp(27px,3vw,44px); line-height: 1.08; letter-spacing: -.025em; }
+.wipes-title > span { white-space: nowrap; }
+.wipes-title strong { margin-top: .1em; font-size: 1.45em; line-height: .98; letter-spacing: .01em; }
+.wipes-description { max-width: 31ch; margin-top: 24px; font-size: clamp(14px,1.25vw,18px); line-height: 1.55; text-wrap: pretty; }
+@media(max-width:700px) {
+ .wipes-title { font-size: clamp(24px,6.3vw,32px); }
+ .wipes-title strong { font-size: 1.5em; }
+ .wipes-description { font-size: 12px; max-width: 28ch; margin-top: 14px; }
+ .banner-wipes { padding-top: 11%; }
+}
+@media(max-width:350px) {
+ .wipes-title { font-size: 23px; }
+ .wipes-description { margin-top: 12px; }
+ .banner-wipes { padding-top: 10%; }
+}
+/* Alinhamento óptico entre a serifa e a fonte de destaque no tutorial. */
+main .tutorial .tutorial-heading h2 > span { position: relative; top: .13em; }
+@media(max-width:700px) {
+ main .tutorial .tutorial-heading h2 > span { display: block; top: 0; margin-top: .12em; }
+}
+/* Fechamento do comparativo com as mesmas margens da tabela. */
+.comparison-section .comparison-takeaway {
+ max-width: 1080px; margin: 24px auto 0; padding: 24px 0 0;
+ border-top: 1px solid #f2e9df35; border-bottom: 0;
+ grid-template-columns: minmax(0,.9fr) minmax(0,1.2fr); gap: 36px; align-items: start;
+}
+.comparison-section .comparison-takeaway strong { font-size: clamp(26px,2.3vw,32px); line-height: 1.15; }
+.comparison-section .comparison-takeaway p { margin: 0; font-size: 16px; line-height: 1.6; max-width: 58ch; }
+.comparison-section .comparison-takeaway .section-cta { justify-content: flex-start; margin: 18px 0 0; padding: 0; }
+@media(max-width:700px) {
+ .comparison-section .comparison-takeaway { grid-template-columns: 1fr; gap: 14px; margin-top: 20px; padding-top: 20px; }
+ .comparison-section .comparison-takeaway p { font-size: 14px; }
+ .comparison-section .comparison-takeaway .button { white-space: normal; text-align: center; }
+}
+/* Creators: espaços de vídeo leves e alinhados enquanto as mídias não chegam. */
+main .creators-section { padding-block: 52px; background: #eee3dd; }
+main .creators-heading h2 { font-size: clamp(36px,3.7vw,52px); }
+main .creators-heading h2 span { position: relative; top: .1em; }
+main .creators-section .creators-heading > p { margin-top: 14px; }
+.creators-layout .creator-grid { max-width: 720px; gap: 22px; align-items: stretch; }
+.creators-section .creator-frame:not(.has-video) { background: #e8d2dc; color: var(--wine); border: 1px solid #44001114; box-shadow: none; }
+.creators-section article:nth-child(2) .creator-frame:not(.has-video) { background: #e8dfd1; }
+.creators-section article:nth-child(3) .creator-frame:not(.has-video) { background: #dbe3eb; }
+.creator-frame:not(.has-video) .media-placeholder { display: grid; grid-template-rows: 20px 46px 64px 22px; gap: 14px; align-content: center; justify-items: center; padding: 24px 18px; height: 100%; }
+.creator-frame:not(.has-video) .media-placeholder::before { content: ''; grid-row: 2; width: 40px; height: 40px; background: currentColor; opacity: .65; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.2' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpath d='m10 8 6 4-6 4Z'/%3E%3C/svg%3E") center/contain no-repeat; }
+.creator-frame:not(.has-video) .media-placeholder > .eyebrow { grid-row: 1; margin: 0; font-size: 10px; letter-spacing: .08em; align-self: center; }
+.creator-frame:not(.has-video) .media-placeholder strong { grid-row: 3; display: flex; align-items: center; justify-content: center; width: 100%; height: 64px; max-width: 12ch; font-size: 25px; line-height: 1.15; text-wrap: balance; }
+.creator-frame:not(.has-video) .media-status { grid-row: 4; align-self: center; margin: 0; padding: 0; border: 0; border-radius: 0; background: none; color: #73515e; font-size: 12px; line-height: 1.5; }
+.creators-section .creator-grid article:hover .creator-frame { translate: none; }
+@media(max-width:700px) {
+ main .creators-section { padding-block: 40px; }
+ .creators-layout .creator-grid { grid-template-columns: repeat(3,minmax(210px,1fr)); gap: 16px; }
+ main .creators-heading h2 { font-size: 38px; }
+ .creator-frame:not(.has-video) .media-placeholder strong { font-size: 24px; }
+}
+/* Distância explícita entre as duas famílias nos títulos em linha. */
+main .tutorial .tutorial-heading h2 { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 .2em; }
+main .creators-heading h2 { display: flex; justify-content: center; align-items: baseline; gap: .22em; }
+/* A foto cobre toda a coluna; a ancoragem superior evita recentralização ao abrir respostas. */
+.faq-photo { height: 100%; object-position: center top; }
+/* Informação de acompanhamento, sem aparência de ação. */
+.case-bonus { padding: 0; border-radius: 0; background: transparent; gap: 9px; margin-bottom: 18px; color: #73515e; font-size: 13px; }
+.case-bonus img { width: 20px; height: 30px; }
+@media(max-width:700px) {
+ main .tutorial .tutorial-heading h2 { display: block; }
+ .faq-photo { height: 310px; object-position: center 50%; }
+}
+@media(max-width:700px) { .wipes-description { max-width: none; } }
+main h2:hover, main .paper-wine h2:hover { color: inherit; }
+main .tutorial .tutorial-heading h2 > span, main .creators-heading h2 span { top: 0; }
+/* Mais presença de campanha, com escala próxima à chamada do KV. */
+.wipes-title { font-size: clamp(28px,3.4vw,49px); }
+.wipes-title > span { text-transform: uppercase; letter-spacing: -.035em; }
+.wipes-title strong { font-size: 1.8em; letter-spacing: 0; margin-top: .12em; }
+@media(max-width:700px) {
+ .wipes-title { font-size: clamp(24px,6.8vw,29px); }
+ .wipes-title strong { font-size: 1.8em; }
+}
+@media(max-width:350px) { .wipes-title { font-size: 23px; } }

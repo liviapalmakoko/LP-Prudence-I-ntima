@@ -279,3 +279,16 @@ cards menores, com as colunas equilibradas no desktop. O novo card sinaliza
 conteúdo futuro e reutiliza os elementos de colagem da campanha; não foi
 criado um artigo interno nem estimado um tempo de leitura para ele. Todos
 os quatro cards permanecem sem links e com “Em breve”, conforme Lívia pediu.
+
+## Refinamento visual solicitado por Lívia — 26/11/2026
+
+Banner dos lenços com chamada em duas linhas e nova proporção entre as
+fontes. Ajustado o alinhamento óptico do título do tutorial. Fechamento do
+comparativo passa a seguir a largura da tabela, com botão junto da explicação.
+Creators com fundos claros, texto/avisos em posições consistentes e os
+espaços 9:16 preservados para os vídeos finais. Foto do FAQ preenche a coluna
+e usa ancoragem superior para não recentralizar ao abrir as respostas.
+“Estojo incluso” na compra passa a informação simples, sem cápsula rosa.
+A capa provisória do quarto card do blog foi substituída por uma colagem
+editorial sobre conversa, gerada com a ferramenta integrada a partir do
+estilo das demais capas, em `dist/assets/blog/conversas.jpg`.
