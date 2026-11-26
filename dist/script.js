@@ -100,3 +100,35 @@ const questions=[...document.querySelectorAll('.faq-list details')];
 questions.forEach(question=>question.addEventListener('toggle',()=>{
  if(question.open)questions.forEach(other=>{if(other!==question)other.open=false;});
 }));
+
+// Reserva a maior resposta para que o enquadramento não mude a cada abertura.
+const faqSection=document.querySelector('.faq-section');
+const faqContent=document.querySelector('.faq-content');
+let faqMeasuredWidth=0;
+function stabilizeFaqPhoto(){
+ if(!faqContent)return;
+ const width=faqContent.getBoundingClientRect().width;
+ if(window.innerWidth<=700){
+  faqSection.style.removeProperty('--faq-reserved-height');
+  faqMeasuredWidth=0;
+  return;
+ }
+ if(Math.abs(width-faqMeasuredWidth)<.5)return;
+ faqMeasuredWidth=width;
+ const measure=faqContent.cloneNode(true);
+ measure.querySelectorAll('[id],[name]').forEach(node=>{node.removeAttribute('id');node.removeAttribute('name');});
+ measure.style.cssText=`position:absolute;visibility:hidden;pointer-events:none;width:${width}px;min-height:0;inset:0 auto auto 0;`;
+ const answers=[...measure.querySelectorAll('details')];
+ answers.forEach(answer=>answer.open=false);
+ faqContent.parentElement.append(measure);
+ let height=measure.getBoundingClientRect().height;
+ answers.forEach(answer=>{
+  answer.open=true;
+  height=Math.max(height,measure.getBoundingClientRect().height);
+  answer.open=false;
+ });
+ measure.remove();
+ faqSection.style.setProperty('--faq-reserved-height',`${Math.ceil(height)}px`);
+}
+new ResizeObserver(stabilizeFaqPhoto).observe(faqContent);
+document.fonts.ready.then(()=>{faqMeasuredWidth=0;stabilizeFaqPhoto();});
