@@ -605,3 +605,17 @@ main .tutorial .tutorial-heading h2 > span, main .creators-heading h2 span { top
 }
 
 @media(min-width:701px) { .faq-content { min-height: var(--faq-reserved-height, 700px); } }
+
+/* Títulos de campanha com presença proporcional ao primeiro banner. */
+.banner-editorial { max-width: 46%; bottom: 24%; }
+.banner-title { display: block; font-size: clamp(50px,6vw,88px); line-height: .98; letter-spacing: -.035em; }
+.banner-title strong { max-width: 9ch; font-size: .85em; line-height: 1.02; margin-top: .16em; letter-spacing: 0; text-wrap: balance; }
+.wipes-title { font-size: clamp(36px,4.5vw,66px); line-height: 1.02; }
+.wipes-title strong { font-size: 1.6em; line-height: 1; margin-top: .15em; }
+@media(max-width:700px) {
+ .banner-editorial { max-width: 88%; top: 7%; bottom: auto; }
+ .banner-title { font-size: clamp(38px,10.5vw,62px); }
+ .banner-title strong { max-width: none; font-size: .72em; }
+ .wipes-title { font-size: clamp(27px,7.6vw,44px); }
+ .wipes-title strong { font-size: 1.7em; }
+}
