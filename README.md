@@ -297,3 +297,10 @@ CTA do fechamento do comparativo reforçado em amarelo da campanha, com
 maior tamanho e seta horizontal. Tabela, nota e fechamento compartilham as
 mesmas margens no desktop. A conferência inclui a versão publicada e a
 atualização da aba de revisão para evitar comparar com HTML antigo carregado.
+
+### Enquadramento do FAQ — 26/11/2026
+
+Foto do FAQ ajustada para preservar o estojo e a nécessaire: coluna mais
+estreita no desktop, ancoragem inferior e proporção 4:5 no celular. Conferida
+com FAQ aberto/fechado, sem faixa vazia sob a imagem. O original com marca
+d'água permanece intacto; a mudança é de apresentação em CSS.

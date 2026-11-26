@@ -596,3 +596,10 @@ main .tutorial .tutorial-heading h2 > span, main .creators-heading h2 span { top
 @media(max-width:700px) {
  .comparison-section .comparison-takeaway .button { width: 100%; min-width: 0; padding-inline: 18px; font-size: 15px; }
 }
+/* FAQ: enquadramento de produto — preservar estojo e nécessaire na metade inferior. */
+.faq-photo { width: 32%; height: 100%; object-fit: cover; object-position: center bottom; }
+.faq-layout { grid-template-columns: 26% 1fr; gap: 8%; }
+@media(max-width:700px) {
+ .faq-photo { width: 100%; height: auto; aspect-ratio: 4/5; object-position: center bottom; }
+ .faq-layout { display: block; }
+}
