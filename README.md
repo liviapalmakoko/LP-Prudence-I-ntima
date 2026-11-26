@@ -292,3 +292,8 @@ e usa ancoragem superior para não recentralizar ao abrir as respostas.
 A capa provisória do quarto card do blog foi substituída por uma colagem
 editorial sobre conversa, gerada com a ferramenta integrada a partir do
 estilo das demais capas, em `dist/assets/blog/conversas.jpg`.
+
+CTA do fechamento do comparativo reforçado em amarelo da campanha, com
+maior tamanho e seta horizontal. Tabela, nota e fechamento compartilham as
+mesmas margens no desktop. A conferência inclui a versão publicada e a
+atualização da aba de revisão para evitar comparar com HTML antigo carregado.

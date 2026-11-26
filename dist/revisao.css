@@ -585,3 +585,14 @@ main .tutorial .tutorial-heading h2 > span, main .creators-heading h2 span { top
  .wipes-title strong { font-size: 1.8em; }
 }
 @media(max-width:350px) { .wipes-title { font-size: 23px; } }
+/* CTA de conversão com mais presença e contraste sobre o vinho. */
+.comparison-section .comparison-takeaway .button {
+ min-height: 58px; min-width: min(100%,310px); padding: 17px 26px;
+ background: #f3df92; color: #440011; border: 1px solid #f7e8bf;
+ font-size: 16px; line-height: 1.3; gap: 14px; box-shadow: 0 8px 22px #19000835;
+}
+.comparison-section .comparison-takeaway .button:hover { background: #fff0b7; }
+.comparison-section .comparison-takeaway .button svg { width: 21px; height: 21px; flex: 0 0 auto; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+@media(max-width:700px) {
+ .comparison-section .comparison-takeaway .button { width: 100%; min-width: 0; padding-inline: 18px; font-size: 15px; }
+}
