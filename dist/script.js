@@ -1,5 +1,40 @@
 const content=window.PRUDENCE_CONTENT;
 let currentSlide=0;
+const campaign=document.querySelector('.campaign');
+const autoplayButton=document.getElementById('banner-autoplay');
+const bannerMotion=matchMedia('(prefers-reduced-motion: reduce)');
+const bannerDuration=7000;
+const bannerProgress=document.getElementById('banner-progress-fill').animate(
+ [{transform:'scaleX(0)'},{transform:'scaleX(1)'}],
+ {duration:bannerDuration,easing:'linear',fill:'both'}
+);
+bannerProgress.pause();
+let bannerTimer,autoplayPaused=bannerMotion.matches,bannerVisible=true;
+function pauseBanner(){clearTimeout(bannerTimer);bannerProgress.pause();}
+function scheduleBanner(){
+ pauseBanner();
+ if(autoplayPaused||document.hidden||!bannerVisible||campaign.matches(':hover')||campaign.contains(document.activeElement))return;
+ const remaining=Math.max(0,bannerDuration-Number(bannerProgress.currentTime||0));
+ bannerProgress.play();
+ bannerTimer=setTimeout(()=>changeSlide(currentSlide+1),remaining);
+}
+function updateAutoplayButton(){
+ autoplayButton.innerHTML=autoplayPaused?'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 11 7-11 7Z"/></svg>':'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h4v14H7zM15 5h4v14h-4z"/></svg>';
+ autoplayButton.title=autoplayPaused?'Retomar banners':'Pausar banners';
+ autoplayButton.setAttribute('aria-label',autoplayPaused?'Retomar passagem automática dos banners':'Pausar passagem automática dos banners');
+ document.getElementById('slide-count').setAttribute('aria-live',autoplayPaused?'polite':'off');
+}
+autoplayButton.addEventListener('click',()=>{autoplayPaused=!autoplayPaused;updateAutoplayButton();scheduleBanner();});
+campaign.addEventListener('mouseenter',pauseBanner);
+campaign.addEventListener('mouseleave',scheduleBanner);
+campaign.addEventListener('focusin',pauseBanner);
+campaign.addEventListener('focusout',()=>setTimeout(scheduleBanner,0));
+campaign.addEventListener('touchstart',pauseBanner,{passive:true});
+campaign.addEventListener('touchend',scheduleBanner,{passive:true});
+document.addEventListener('visibilitychange',scheduleBanner);
+new IntersectionObserver(entries=>{bannerVisible=entries[0].isIntersecting;scheduleBanner();},{threshold:.25}).observe(campaign);
+bannerMotion.addEventListener('change',()=>{autoplayPaused=bannerMotion.matches;updateAutoplayButton();scheduleBanner();});
+updateAutoplayButton();
 const mobileBanner=matchMedia('(max-width: 700px)');
 function updateBannerAlt(){
  const slide=content.banners[currentSlide];
@@ -7,6 +42,8 @@ function updateBannerAlt(){
 }
 mobileBanner.addEventListener('change',updateBannerAlt);
 function changeSlide(index){
+ pauseBanner();
+ bannerProgress.currentTime=0;
  currentSlide=(index+content.banners.length)%content.banners.length;
  const slide=content.banners[currentSlide];
  const img=document.getElementById('banner-image');
@@ -24,8 +61,16 @@ function changeSlide(index){
   document.getElementById('banner-description').textContent=slide.editorial.description||'';
  }
  const cta=document.getElementById('banner-cta');cta.href=slide.href;cta.textContent=slide.cta;
+ if(!bannerMotion.matches){
+  cta.getAnimations().forEach(animation=>animation.cancel());
+  cta.animate(
+   [{opacity:0,transform:'translateY(5px)'},{opacity:1,transform:'translateY(0)'}],
+   {duration:800,delay:180,easing:'cubic-bezier(.25,.1,.25,1)',fill:'backwards'}
+  );
+ }
  document.getElementById('slide-count').textContent=String(currentSlide+1).padStart(2,'0')+' / '+String(content.banners.length).padStart(2,'0');
  document.querySelectorAll('[data-slide]').forEach((button,i)=>{if(i===currentSlide)button.setAttribute('aria-current','true');else button.removeAttribute('aria-current')});
+ scheduleBanner();
 }
 document.getElementById('previous').addEventListener('click',()=>changeSlide(currentSlide-1));
 document.getElementById('next').addEventListener('click',()=>changeSlide(currentSlide+1));
